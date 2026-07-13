@@ -107,8 +107,8 @@ img, svg { max-width: 100%; }
 .dd-menu a { display: block; padding: 9px 12px; border-radius: 8px; color: var(--ink); font-size: .92rem; font-weight: 500; }
 .dd-menu a:hover { background: var(--bg-soft); text-decoration: none; }
 .dd-menu a span { display:block; font-size:.78rem; color: var(--muted); font-weight: 400; }
-.menu-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
-.menu-toggle svg { width: 26px; height: 26px; }
+.menu-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 6px; line-height: 0; color: var(--ink); }
+.menu-toggle svg { display: block; width: 28px; height: 28px; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #F7F9FC 0%, #fff 100%); }
@@ -352,8 +352,8 @@ form.lead input:focus, form.lead select:focus, form.lead textarea:focus { outlin
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
 }
 @media (max-width: 720px) {
-  .nav-links, .nav-cta .btn-ghost { display: none; }
-  .menu-toggle { display: block; }
+  .nav-links, .nav-cta, .nav-spacer { display: none; }
+  .menu-toggle { display: block; margin-left: auto; }
   .nav-links.open {
     display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
     position: absolute; top: 68px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line);
