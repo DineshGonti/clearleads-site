@@ -6,6 +6,11 @@ from build import (page, cta_band, faq_block, faq_schema, arrow, ICONS,
 
 A = arrow()
 
+# Google Calendar appointment-scheduling links
+BOOKING_SHORT = "https://calendar.app.google/66XrwXoYgtQk2Tpy6"          # share link (fallback / new tab)
+BOOKING_EMBED = ("https://calendar.google.com/calendar/appointments/schedules/"
+                 "AcZssZ3aQT9y510aJiLuXlIPVc-HwWBxe0kSPPZMXJ7B_cB77AJkVo-7pzs6BBDh-lUwLeBKi90_QUWl?gv=true")  # embeddable
+
 # ------------------------------------------------------------------
 # Reusable sections
 # ------------------------------------------------------------------
@@ -733,14 +738,13 @@ def build_contact():
       <div>
         <h2>Pick a time</h2>
         <p class="lede" style="font-size:1.05rem">Choose a slot that suits you and we'll send a calendar invite with a short intake form.</p>
-        <div class="calendly-holder" id="book">
-          <div class="inner">
-            <div class="cal-ico">{ICONS['calendar']}</div>
-            <h3>Calendly booking widget</h3>
-            <p style="color:var(--muted)">Embed your Calendly link here to make this the primary conversion point. Replace the placeholder with your scheduling embed.</p>
-            <a href="https://calendly.com/clearleads/strategy-call" class="btn btn-primary mt-1">Open scheduler {A}</a>
-          </div>
+        <div class="booking-embed" id="book">
+          <iframe src="{BOOKING_EMBED}" title="Book a call with ClearLeads"
+                  width="100%" height="660" frameborder="0" loading="lazy"
+                  style="border:0;display:block;min-height:660px"></iframe>
         </div>
+        <p class="center" style="margin-top:14px;font-size:.92rem;color:var(--muted)">Calendar not loading?
+          <a href="{BOOKING_SHORT}" target="_blank" rel="noopener">Open the scheduler in a new tab {A}</a></p>
       </div>
       <div>
         <h2>Prefer to send a note?</h2>

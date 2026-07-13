@@ -5,7 +5,7 @@ import os, json, html, pathlib
 
 SITE = "https://clearleads.co"
 NAME = "ClearLeads"
-CSS_VER = "5"   # bump to bust the stylesheet cache on deploy
+CSS_VER = "6"   # bump to bust the stylesheet cache on deploy
 OUT = pathlib.Path(__file__).resolve().parents[1]
 BOOK = "contact.html"      # book-a-call conversion page
 
