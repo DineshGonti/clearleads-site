@@ -1010,7 +1010,65 @@ def build_meta_files():
     (b.OUT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
     robots = f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n"
     (b.OUT / "robots.txt").write_text(robots, encoding="utf-8")
-    print("wrote sitemap.xml, robots.txt")
+    # CNAME — tells GitHub Pages which custom domain serves this site
+    domain = SITE.replace("https://", "").replace("http://", "").rstrip("/")
+    (b.OUT / "CNAME").write_text(domain + "\n", encoding="utf-8")
+    print(f"wrote sitemap.xml, robots.txt, CNAME ({domain})")
+
+def build_404():
+    """Self-contained branded 404 (inline styles so it renders at any URL depth)."""
+    doc = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | {NAME}</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563EB'/%3E%3Cpath d='M9 16.5l4 4 10-10' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  *{{box-sizing:border-box}}
+  body{{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#D9E2F2;padding:24px;
+    background:radial-gradient(1000px 500px at 80% -10%,rgba(6,182,212,.25),transparent 60%),
+      radial-gradient(800px 500px at 0% 110%,rgba(37,99,235,.35),transparent 55%),
+      linear-gradient(160deg,#0A1B3D,#0E2350);}}
+  .wrap{{max-width:520px}}
+  .logo{{width:56px;height:56px;margin:0 auto 26px;display:block}}
+  .code{{font-size:5rem;font-weight:800;letter-spacing:-.04em;line-height:1;margin:0;color:#fff;
+    background:linear-gradient(100deg,#5FA0FF,#22D3EE);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}}
+  h1{{color:#fff;font-size:1.6rem;margin:14px 0 8px;letter-spacing:-.02em}}
+  p{{color:#B7C4DC;font-size:1.05rem;margin:0 0 28px}}
+  a.btn{{display:inline-flex;align-items:center;gap:8px;background:#2563EB;color:#fff;text-decoration:none;
+    font-weight:600;padding:14px 28px;border-radius:999px;box-shadow:0 8px 20px rgba(37,99,235,.35)}}
+  a.btn:hover{{background:#1D4FD7}}
+  .links{{margin-top:22px;font-size:.95rem}}
+  .links a{{color:#7FB0FF;text-decoration:none;margin:0 10px}}
+  .links a:hover{{text-decoration:underline}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="8" fill="url(#g)"/>
+      <path d="M9 16.5l4 4 10-10" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <defs><linearGradient id="g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#2563EB"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+    </svg>
+    <p class="code">404</p>
+    <h1>This page took a wrong turn</h1>
+    <p>The page you're looking for doesn't exist or has moved. Let's get you back to booking meetings.</p>
+    <a class="btn" href="/">Back to home →</a>
+    <div class="links">
+      <a href="/services.html">Services</a>·
+      <a href="/results.html">Results</a>·
+      <a href="/blog/index.html">Blog</a>·
+      <a href="/contact.html">Book a call</a>
+    </div>
+  </div>
+</body>
+</html>'''
+    (b.OUT / "404.html").write_text(doc, encoding="utf-8")
+    print("wrote 404.html")
 
 # ------------------------------------------------------------------
 def build():
@@ -1024,3 +1082,4 @@ def build():
     build_blog_index()
     build_articles()
     build_meta_files()
+    build_404()
