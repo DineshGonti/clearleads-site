@@ -8,13 +8,13 @@ from build import (page, cta_band, faq_block, faq_schema, arrow, ICONS,
 A = arrow()
 
 # Google Calendar appointment-scheduling links
-BOOKING_SHORT = "https://calendar.app.google/66XrwXoYgtQk2Tpy6"          # share link (fallback / new tab)
+BOOKING_SHORT = "https://calendar.app.google/ekFZtyoitgpTGzr76"          # share link (fallback / new tab)
 # Web3Forms access key (free; create at web3forms.com with dinesh@clearleads.co). Public by design.
 # Empty = contact form falls back to opening a pre-filled email.
 FORM_KEY = "39812cf9-94d8-4fe9-9ff4-a69d749381f9"
 
 BOOKING_EMBED = ("https://calendar.google.com/calendar/appointments/schedules/"
-                 "AcZssZ3aQT9y510aJiLuXlIPVc-HwWBxe0kSPPZMXJ7B_cB77AJkVo-7pzs6BBDh-lUwLeBKi90_QUWl?gv=true")  # embeddable
+                 "AcZssZ2k0CcngsQ0ek_qTaUksoCg_WhFP6xUWLB4DQu1311QrXJwOXfeRKrS2BgzW6-McB2SrTyoujIT?gv=true")  # embeddable
 
 # ------------------------------------------------------------------
 # Reusable sections
