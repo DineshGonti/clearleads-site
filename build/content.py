@@ -9,7 +9,7 @@ A = arrow()
 
 # Google Calendar appointment-scheduling links
 BOOKING_SHORT = "https://calendar.app.google/66XrwXoYgtQk2Tpy6"          # share link (fallback / new tab)
-# Web3Forms access key (free; create at web3forms.com with hello@clearleads.co). Public by design.
+# Web3Forms access key (free; create at web3forms.com with dinesh@clearleads.co). Public by design.
 # Empty = contact form falls back to opening a pre-filled email.
 FORM_KEY = ""
 
@@ -818,7 +818,7 @@ def build_contact():
 <section class="bg-soft">
   <div class="container center">
     <div class="grid grid-3" style="max-width:820px;margin:0 auto">
-      <div><div class="stat"><div class="num" style="font-size:1.4rem">hello@clearleads.co</div><div class="lbl">Email us</div></div></div>
+      <div><div class="stat"><div class="num" style="font-size:1.4rem">{b.EMAIL}</div><div class="lbl">Email us</div></div></div>
       <div><div class="stat"><div class="num" style="font-size:1.4rem">Mon–Fri</div><div class="lbl">We reply within 1 business day</div></div></div>
       <div><div class="stat"><div class="num" style="font-size:1.4rem">clearleads.co</div><div class="lbl">B2B Lead Generation</div></div></div>
     </div>

@@ -98,7 +98,7 @@ def footer(prefix=""):
       </ul></div>
       <div><h2 class="foot-h">Get started</h2><ul>
         <li><a href="{prefix}{BOOK}">Book a call</a></li>
-        <li><a href="mailto:hello@clearleads.co">hello@clearleads.co</a></li>
+        <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
         <li><a href="{prefix}results.html">Case studies</a></li>
       </ul></div>
     </div>
@@ -151,7 +151,7 @@ def strip_tags(s):
     import re
     return re.sub(r"<[^>]+>","",s).strip()
 
-EMAIL = "hello@clearleads.co"
+EMAIL = "dinesh@clearleads.co"
 OG_IMAGE = f"{SITE}/assets/og-image.png"
 # Add real profile URLs here once they exist (LinkedIn, Clutch, G2…) — they feed
 # Organization.sameAs, which search engines and LLMs use to confirm the entity.

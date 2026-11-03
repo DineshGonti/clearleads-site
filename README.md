@@ -58,5 +58,5 @@ It's fully static — drop the folder on Netlify, Vercel, Cloudflare Pages, S3, 
 2. **Contact form** — wire the form to a backend/form service (currently shows a client-side thank-you).
 3. **Social proof** — replace sample logos, testimonials, and case-study numbers with real ones as you get them.
 4. **Off-site authority (AEO)** — create Clutch / G2 / Trustpilot profiles and update the `sameAs` links in `ORG_SCHEMA` (build.py).
-5. **`hello@clearleads.co`** — confirm the email or update it.
+5. **`dinesh@clearleads.co`** is the public contact email (`EMAIL` in `build/build.py`).
 6. Add an OG image at `assets/` and reference it, and a real favicon PNG.
