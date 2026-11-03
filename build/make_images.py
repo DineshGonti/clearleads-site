@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generates assets/logo.png and assets/og-image.png (social share card).
-Run once (or after a brand change): python3 make_images.py — needs Pillow."""
+Run once (or after a brand change): python3 make_images.py (needs Pillow)."""
 import pathlib
 from PIL import Image, ImageDraw, ImageFont
 

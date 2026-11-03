@@ -1,4 +1,4 @@
-/* ClearLeads — design system
+/* ClearLeads: design system
    Professional B2B lead-gen agency site. Light theme, conversion-focused. */
 
 :root {
@@ -10,7 +10,7 @@
   --brand:    #2563EB;   /* primary blue */
   --brand-d:  #1D4FD7;
   --brand-2:  #06B6D4;   /* cyan (gradient) */
-  --accent:   #10B981;   /* green — metrics / success */
+  --accent:   #10B981;   /* green: metrics / success */
   --accent-d: #059669;
   --line:     #E6E9EF;
   --line-2:   #EEF1F6;

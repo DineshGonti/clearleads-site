@@ -3,12 +3,12 @@
 > ClearLeads (https://clearleads.co) is a B2B lead generation and appointment setting agency. We book qualified sales meetings directly onto B2B companies' calendars using done-for-you cold email and LinkedIn outreach, verified lead lists, and database reactivation. Clients are typically live within about 14 days and work month-to-month after an initial ramp.
 
 Key facts:
-- What we do: outsourced SDR / appointment setting — prospect list building, multi-channel outreach (cold email + LinkedIn), human reply handling, qualification, and meeting booking with CRM sync and weekly reporting.
+- What we do: outsourced SDR / appointment setting: prospect list building, multi-channel outreach (cold email + LinkedIn), human reply handling, qualification, and meeting booking with CRM sync and weekly reporting.
 - Who it's for: B2B SaaS, agencies, consultancies, professional services, recruiting, fintech, and other B2B companies with a defined ideal customer profile.
 - Pricing: managed appointment-setting programs typically run $2,000–$6,000 per month on retainer; lead lists and one-time outbound system builds are quoted separately.
 - Time to launch: about 14 days (inbox warm-up is the main dependency); first meetings usually within 2–4 weeks.
 - Contracts: no long lock-in; month-to-month after ramp.
-- Regions served: worldwide — mainly North America, the UK, Europe, and Australia (outreach runs in prospects' time zones).
+- Regions served: worldwide, mainly North America, the UK, Europe, and Australia (outreach runs in prospects' time zones).
 - Contact: dinesh@clearleads.co · Book a strategy call: https://clearleads.co/contact.html
 
 ## Services
@@ -20,16 +20,16 @@ Key facts:
 - [Outbound System Setup](https://clearleads.co/outbound-system-setup.html): A one-time build of your entire outreach machine.
 
 ## Company
-- [How it works](https://clearleads.co/how-it-works.html): The four-stage process — discovery & ICP, infrastructure build, launch & booking, weekly optimisation.
+- [How it works](https://clearleads.co/how-it-works.html): The four-stage process: discovery & ICP, infrastructure build, launch & booking, weekly optimisation.
 - [Results](https://clearleads.co/results.html): Case studies and representative outcomes.
 - [About](https://clearleads.co/about.html): Who we are and how we work.
 - [Book a call](https://clearleads.co/contact.html): Free 30-minute strategy call with a meeting forecast and fixed quote.
 
 ## Guides
-- [Outsourced SDR vs in-house SDR: cost, ramp time, and results](https://clearleads.co/blog/outsourced-sdr-vs-in-house.html): The fully-loaded cost of an in-house SDR versus an outsourced SDR agency, side by side — and how to decide.
+- [Outsourced SDR vs in-house SDR: cost, ramp time, and results](https://clearleads.co/blog/outsourced-sdr-vs-in-house.html): The fully-loaded cost of an in-house SDR versus an outsourced SDR agency, side by side, and how to decide.
 - [How to choose a B2B lead generation agency: 12 questions to ask](https://clearleads.co/blog/how-to-choose-a-lead-generation-agency.html): A buyer's checklist for vetting lead generation and appointment-setting agencies before you sign.
 - [What is B2B appointment setting? A complete guide](https://clearleads.co/blog/what-is-appointment-setting.html): What appointment setters do, how the process works, what it costs, and when it beats hiring SDRs.
-- [What is a good cold email reply rate? 2026 benchmarks](https://clearleads.co/blog/cold-email-reply-rate-benchmarks.html): Realistic B2B cold email open, reply, and meeting rates — and the levers that move each one.
+- [What is a good cold email reply rate? 2026 benchmarks](https://clearleads.co/blog/cold-email-reply-rate-benchmarks.html): Realistic B2B cold email open, reply, and meeting rates, and the levers that move each one.
 - [How much does appointment setting cost in 2026?](https://clearleads.co/blog/how-much-does-appointment-setting-cost.html): A clear breakdown of appointment-setting pricing models, real price ranges, and how to work out your cost per meeting.
-- [Cold email vs LinkedIn outreach: which books more meetings?](https://clearleads.co/blog/cold-email-vs-linkedin-outreach.html): How the two biggest outbound channels compare on reach, reply rates, cost, and when to use each — or both.
-- [Cold email deliverability: how we land in the inbox](https://clearleads.co/blog/cold-email-deliverability.html): The exact setup — domains, warm-up, authentication, and sending discipline — that keeps cold email out of spam.
+- [Cold email vs LinkedIn outreach: which books more meetings?](https://clearleads.co/blog/cold-email-vs-linkedin-outreach.html): How the two biggest outbound channels compare on reach, reply rates, cost, and when to use each (or both).
+- [Cold email deliverability: how we land in the inbox](https://clearleads.co/blog/cold-email-deliverability.html): The exact setup (domains, warm-up, authentication, and sending discipline) that keeps cold email out of spam.

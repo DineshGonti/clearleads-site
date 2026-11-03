@@ -86,7 +86,7 @@ def footer(prefix=""):
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="{prefix or './'}">{LOGO_SVG}ClearLeads</a>
-        <p>Outbound lead generation and appointment setting for B2B teams. We book qualified sales meetings straight to your calendar — you close the deals.</p>
+        <p>Outbound lead generation and appointment setting for B2B teams. We book qualified sales meetings straight to your calendar. You close the deals.</p>
       </div>
       <div><h2 class="foot-h">Services</h2><ul>{svc}</ul></div>
       <div><h2 class="foot-h">Company</h2><ul>
@@ -111,7 +111,7 @@ def footer(prefix=""):
 
 def cta_band(prefix="",
              title="Ready to fill your calendar with qualified meetings?",
-             sub="Book a 30-minute strategy call. We'll map your ICP, show you the plan, and give you a realistic meeting forecast — no pressure, no long contracts.",
+             sub="Book a 30-minute strategy call. We'll map your ICP, show you the plan, and give you a realistic meeting forecast. No pressure, no long contracts.",
              btn="Book your strategy call"):
     return f'''<section class="cta-band">
   <div class="container">
@@ -153,7 +153,7 @@ def strip_tags(s):
 
 EMAIL = "dinesh@clearleads.co"
 OG_IMAGE = f"{SITE}/assets/og-image.png"
-# Add real profile URLs here once they exist (LinkedIn, Clutch, G2…) — they feed
+# Add real profile URLs here once they exist (LinkedIn, Clutch, G2…); they feed
 # Organization.sameAs, which search engines and LLMs use to confirm the entity.
 SAME_AS = []
 
@@ -215,7 +215,7 @@ def page(slug, title, desc, body, schemas=None, active="", prefix="", canonical=
 <meta property="og:image" content="{OG_IMAGE}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ClearLeads — qualified B2B sales meetings, booked on your calendar">{art_meta}
+<meta property="og:image:alt" content="ClearLeads: qualified B2B sales meetings, booked on your calendar">{art_meta}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">

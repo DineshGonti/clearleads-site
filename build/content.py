@@ -45,7 +45,7 @@ def stat_band(dark=True, items=None):
 def process_steps(prefix=""):
     steps = [
         ("Map your ICP & offer", "We define your ideal customer profile, sharpen your positioning, and build a targeted prospect list of decision-makers who fit."),
-        ("Build the outbound engine", "We set up dedicated sending infrastructure, warm inboxes, write channel-specific copy, and configure LinkedIn — engineered for the inbox, not the spam folder."),
+        ("Build the outbound engine", "We set up dedicated sending infrastructure, warm inboxes, write channel-specific copy, and configure LinkedIn, all engineered for the inbox, not the spam folder."),
         ("Launch & book meetings", "Sequences go live across email and LinkedIn. We handle every reply, qualify interest, and book meetings straight onto your calendar."),
         ("Optimise & scale", "We report weekly on real numbers, A/B test messaging and lists, and scale what converts so your pipeline keeps compounding."),
     ]
@@ -56,7 +56,7 @@ def process_steps(prefix=""):
   <div class="container">
     <div class="section-head"><span class="eyebrow">How it works</span>
       <h2>From zero to booked meetings in four steps</h2>
-      <p>A transparent, done-for-you system. You approve the strategy — we run the machine and fill your calendar.</p></div>
+      <p>A transparent, done-for-you system. You approve the strategy; we run the machine and fill your calendar.</p></div>
     <div class="steps grid-4">{cells}</div>
     <div class="center mt-3"><a href="{prefix}how-it-works.html" class="btn btn-ghost">See the full process {A}</a></div>
   </div>
@@ -68,7 +68,7 @@ def testimonial_row():
          "SM", "Sarah Mitchell", "VP Sales, Vertex SaaS"),
         ("We tried building outbound in-house for a year and stalled. ClearLeads had us live in two weeks and our reply rate tripled.",
          "DR", "David Reyes", "Founder, BluePeak"),
-        ("The reporting is refreshingly honest — real numbers every week, no vanity metrics. Our SDR cost per meeting dropped by half.",
+        ("The reporting is refreshingly honest: real numbers every week, no vanity metrics. Our SDR cost per meeting dropped by half.",
          "AK", "Aisha Khan", "Head of Growth, Ledgerly"),
     ]
     cells = ""
@@ -88,9 +88,9 @@ def testimonial_row():
 def why_us():
     items = [
         ("shield", "No long lock-in", "Month-to-month after an initial ramp. We earn the renewal with booked meetings, not contracts."),
-        ("chart", "Transparent reporting", "A live dashboard and a weekly numbers call. You see every send, reply, and meeting — no black box."),
+        ("chart", "Transparent reporting", "A live dashboard and a weekly numbers call. You see every send, reply, and meeting. No black box."),
         ("target", "Only qualified meetings", "We book prospects that match your ICP and show real intent. No-shows and junk leads don't count."),
-        ("bolt", "Live in ~14 days", "Infrastructure, copy, and lists ready in two weeks — not the two months an in-house build takes."),
+        ("bolt", "Live in ~14 days", "Infrastructure, copy, and lists ready in two weeks, not the two months an in-house build takes."),
     ]
     cells = ""
     for ico, t, d in items:
@@ -131,7 +131,7 @@ def build_home():
 
     faqs = [
         ("What does a B2B lead generation agency actually do?",
-         "<p>A B2B lead generation agency runs outbound prospecting on your behalf — building targeted lists, writing and sending cold email and LinkedIn messages, and booking qualified sales meetings directly onto your calendar. ClearLeads owns the full top-of-funnel so your closers spend their time selling, not prospecting.</p>"),
+         "<p>A B2B lead generation agency runs outbound prospecting on your behalf: building targeted lists, writing and sending cold email and LinkedIn messages, and booking qualified sales meetings directly onto your calendar. ClearLeads owns the full top-of-funnel so your closers spend their time selling, not prospecting.</p>"),
         ("How is a “qualified meeting” defined?",
          "<p>A qualified meeting is a scheduled call with a decision-maker who matches your ideal customer profile and has expressed genuine interest in your offer. We agree the qualification criteria with you up front, and no-shows within our control are replaced free.</p>"),
         ("How quickly will I see booked meetings?",
@@ -139,7 +139,7 @@ def build_home():
         ("Do I need long-term contracts?",
          "<p>No. After an initial ramp period we operate month-to-month. We'd rather keep your business by booking meetings than by locking you into a contract.</p>"),
         ("Which industries do you work with?",
-         "<p>We focus on B2B companies with a defined ICP and a real sales motion — SaaS, agencies, professional services, recruiting, and B2B services. If you sell to other businesses and know who your buyer is, outbound can work for you.</p>"),
+         "<p>We focus on B2B companies with a defined ICP and a real sales motion: SaaS, agencies, professional services, recruiting, and B2B services. If you sell to other businesses and know who your buyer is, outbound can work for you.</p>"),
     ]
     body = f'''
 <section class="hero hero-dark">
@@ -147,7 +147,7 @@ def build_home():
     <div class="hero-grid">
       <div>
         <span class="eyebrow on-dark">B2B Lead Generation Agency</span>
-        <h1>Book more qualified sales meetings — <span class="grad">without hiring an SDR team</span></h1>
+        <h1>Book more qualified sales meetings <span class="grad">without hiring an SDR team</span></h1>
         <p class="hero-sub">ClearLeads is a done-for-you outbound agency. We build the system, run cold email and LinkedIn outreach, and drop qualified meetings straight onto your calendar. You just show up and close.</p>
         <div class="hero-cta">
           <a href="{BOOK}" class="btn btn-primary btn-lg">Book a call {A}</a>
@@ -157,10 +157,10 @@ def build_home():
       </div>
       <div class="hero-card">
         <div class="cap">This week · booked meetings</div>
-        <div class="row"><div class="who"><div class="avatar">RT</div><div><b>R. Tanaka — CFO</b><small>Northwind · SaaS</small></div></div><span class="pill booked">Booked</span></div>
-        <div class="row"><div class="who"><div class="avatar">JM</div><div><b>J. Miller — VP Ops</b><small>Cascade · Logistics</small></div></div><span class="pill booked">Booked</span></div>
-        <div class="row"><div class="who"><div class="avatar">EP</div><div><b>E. Park — Head of IT</b><small>Orbit HR · HR Tech</small></div></div><span class="pill booked">Booked</span></div>
-        <div class="row"><div class="who"><div class="avatar">LC</div><div><b>L. Chen — Director</b><small>Ledgerly · Fintech</small></div></div><span class="pill booked">Booked</span></div>
+        <div class="row"><div class="who"><div class="avatar">RT</div><div><b>R. Tanaka, CFO</b><small>Northwind · SaaS</small></div></div><span class="pill booked">Booked</span></div>
+        <div class="row"><div class="who"><div class="avatar">JM</div><div><b>J. Miller, VP Ops</b><small>Cascade · Logistics</small></div></div><span class="pill booked">Booked</span></div>
+        <div class="row"><div class="who"><div class="avatar">EP</div><div><b>E. Park, Head of IT</b><small>Orbit HR · HR Tech</small></div></div><span class="pill booked">Booked</span></div>
+        <div class="row"><div class="who"><div class="avatar">LC</div><div><b>L. Chen, Director</b><small>Ledgerly · Fintech</small></div></div><span class="pill booked">Booked</span></div>
       </div>
     </div>
   </div>
@@ -171,7 +171,7 @@ def build_home():
 <section>
   <div class="container narrow">
     <div class="section-head left"><span class="eyebrow">What we do</span><h2>Qualified meetings, booked for you</h2></div>
-    <p class="answer"><strong>ClearLeads is a B2B lead generation agency that books qualified sales meetings for you.</strong> We build targeted prospect lists, run cold email and LinkedIn outreach from your brand, handle every reply, and schedule interested decision-makers directly onto your calendar — so your team can focus entirely on closing revenue.</p>
+    <p class="answer"><strong>ClearLeads is a B2B lead generation agency that books qualified sales meetings for you.</strong> We build targeted prospect lists, run cold email and LinkedIn outreach from your brand, handle every reply, and schedule interested decision-makers directly onto your calendar, so your team can focus entirely on closing revenue.</p>
   </div>
 </section>
 
@@ -193,7 +193,7 @@ def build_home():
       <div class="txt">
         <span class="eyebrow on-dark">Proof, not promises</span>
         <h2>We report the numbers that actually matter</h2>
-        <p>No vanity metrics. Every week you get a live view of sends, reply rates, and — the only number that pays the bills — meetings booked. Here's a snapshot from a typical SaaS engagement.</p>
+        <p>No vanity metrics. Every week you get a live view of sends, reply rates, and meetings booked (the only number that pays the bills). Here's a snapshot from a typical SaaS engagement.</p>
         <a href="results.html" class="btn btn-primary mt-1">Read the case studies {A}</a>
       </div>
       <div class="panel">
@@ -243,7 +243,7 @@ def build_services():
     <div class="narrow">
       <span class="eyebrow">Services</span>
       <h1>Outbound lead generation & sales development services</h1>
-      <p class="lede mt-1">Outsourced SDR services for B2B teams. Pick the flagship appointment-setting offer, or assemble the exact outbound system your pipeline needs — every service is built to book qualified meetings.</p>
+      <p class="lede mt-1">Outsourced SDR services for B2B teams. Pick the flagship appointment-setting offer, or assemble the exact outbound system your pipeline needs. Every service is built to book qualified meetings.</p>
       <div class="hero-cta mt-2"><a href="{BOOK}" class="btn btn-primary btn-lg">Book a call {A}</a>
         <a href="how-it-works.html" class="btn btn-ghost btn-lg">How it works</a></div>
     </div>
@@ -251,7 +251,7 @@ def build_services():
 </section>
 <section>
   <div class="container narrow">
-    <p class="answer"><strong>ClearLeads offers outsourced sales development and appointment-setting services for B2B companies.</strong> Our services span appointment setting, done-for-you cold email, LinkedIn outreach, verified lead-list building, database reactivation, and one-time outbound system setup — delivered as a managed service and measured on qualified meetings booked.</p>
+    <p class="answer"><strong>ClearLeads offers outsourced sales development and appointment-setting services for B2B companies.</strong> Our services span appointment setting, done-for-you cold email, LinkedIn outreach, verified lead-list building, database reactivation, and one-time outbound system setup, delivered as a managed service and measured on qualified meetings booked.</p>
   </div>
 </section>
 <section class="section-tight">
@@ -278,7 +278,7 @@ def service_page(slug, title, h1, seo_title, meta, answer, included, metrics, wh
     who = "".join(f'<li>{w}</li>' for w in whofor)
     service_schema = {
         "@context": "https://schema.org", "@type": "Service",
-        "serviceType": title, "name": f"{title} — {NAME}",
+        "serviceType": title, "name": f"{title} by {NAME}",
         "provider": {"@id": f"{SITE}/#org"},
         "areaServed": "Worldwide", "audience": {"@type": "BusinessAudience", "audienceType": "B2B companies"},
         "description": b.strip_tags(answer), "url": f"{SITE}/{slug}.html",
@@ -355,10 +355,10 @@ def build_services_detail():
         "Appointment setting services that book qualified B2B meetings",
         "Appointment Setting Services & Company | ClearLeads",
         "Done-for-you appointment setting services. We book qualified B2B sales meetings straight to your calendar via email and LinkedIn outreach. No-shows replaced free.",
-        "<strong>Appointment setting is a done-for-you service where we book qualified sales meetings directly onto your calendar.</strong> ClearLeads identifies decision-makers who fit your ICP, reaches them across email and LinkedIn, handles every reply, qualifies interest against agreed criteria, and schedules the meeting — so your closers only ever talk to real prospects.",
+        "<strong>Appointment setting is a done-for-you service where we book qualified sales meetings directly onto your calendar.</strong> ClearLeads identifies decision-makers who fit your ICP, reaches them across email and LinkedIn, handles every reply, qualifies interest against agreed criteria, and schedules the meeting, so your closers only ever talk to real prospects.",
         ["Ideal customer profile and target-account list built to spec",
          "Multi-channel outreach across cold email and LinkedIn",
-         "Human reply handling — objections, questions, and scheduling",
+         "Human reply handling: objections, questions, and scheduling",
          "Meetings booked straight to your calendar with full context notes",
          "No-show handling and automatic reschedules",
          "CRM sync and weekly reporting on meetings booked"],
@@ -373,7 +373,7 @@ def build_services_detail():
         [("How much does appointment setting cost?",
           "<p>Most B2B appointment-setting engagements run on a monthly retainer between roughly $2,000 and $6,000, sometimes with a per-meeting or performance component. Pricing depends on target volume, market complexity, and how many channels you run. We give you a fixed quote and a realistic meeting forecast on your strategy call. See our full breakdown in <a href='blog/how-much-does-appointment-setting-cost.html'>How much does appointment setting cost?</a></p>"),
          ("What counts as a qualified meeting?",
-          "<p>A meeting with a decision-maker who matches your agreed ICP and has expressed genuine interest in your offer. We set the criteria — title, company size, budget, timeline — with you before launch, so every booked meeting is one worth taking.</p>"),
+          "<p>A meeting with a decision-maker who matches your agreed ICP and has expressed genuine interest in your offer. We set the criteria (title, company size, budget, timeline) with you before launch, so every booked meeting is one worth taking.</p>"),
          ("What happens if a prospect no-shows?",
           "<p>We track show-ups and follow up to reschedule. No-shows caused by factors within our control are replaced at no extra cost, so you only pay for meetings that count.</p>"),
          ("Do the meetings appear on our own calendar?",
@@ -388,8 +388,8 @@ def build_services_detail():
         "cold-email", "Done-For-You Cold Email",
         "Done-for-you cold email agency that lands in the inbox",
         "Cold Email Agency | Done-For-You Cold Email | ClearLeads",
-        "Done-for-you cold email agency. We handle inbox setup, deliverability, copywriting, sending, and reply handling to book meetings — cold email for SaaS and B2B startups.",
-        "<strong>Done-for-you cold email is a managed service covering everything from infrastructure to booked meetings.</strong> ClearLeads sets up dedicated sending domains and inboxes, warms them, writes and tests the copy, sends at scale, and handles every reply — engineered to land in the primary inbox and turn cold prospects into booked calls.",
+        "Done-for-you cold email agency. We handle inbox setup, deliverability, copywriting, sending, and reply handling to book meetings. Cold email for SaaS and B2B startups.",
+        "<strong>Done-for-you cold email is a managed service covering everything from infrastructure to booked meetings.</strong> ClearLeads sets up dedicated sending domains and inboxes, warms them, writes and tests the copy, sends at scale, and handles every reply, engineered to land in the primary inbox and turn cold prospects into booked calls.",
         ["Dedicated domains and inboxes, fully warmed for deliverability",
          "SPF, DKIM, and DMARC configured correctly from day one",
          "Verified, ICP-matched prospect lists refreshed continuously",
@@ -409,10 +409,10 @@ def build_services_detail():
          ("Is cold email legal?",
           "<p>Yes, when done correctly. B2B cold outreach is permitted under CAN-SPAM (US) and, with a legitimate-interest basis and clear opt-out, under GDPR (EU). We include accurate sender identity and honour unsubscribe requests on every send.</p>"),
          ("Will you use my domain?",
-          "<p>No — we register and warm dedicated lookalike domains so your primary domain's reputation is never put at risk. All replies still route to you and appear under your brand.</p>"),
+          "<p>No. We register and warm dedicated lookalike domains so your primary domain's reputation is never put at risk. All replies still route to you and appear under your brand.</p>"),
          ("How many meetings can cold email book?",
           "<p>It varies by market and offer, but a well-run campaign sending ~3,000 quality emails a month typically produces 10–25 qualified conversations. We'll forecast realistically for your niche on the call. See <a href='blog/cold-email-reply-rate-benchmarks.html'>cold email reply rate benchmarks</a>.</p>"),
-         ("Cold email or LinkedIn — which is better?",
+         ("Cold email or LinkedIn: which is better?",
           "<p>They work best together. Email gives reach and volume; LinkedIn adds trust and a second touch. See <a href='blog/cold-email-vs-linkedin-outreach.html'>Cold email vs LinkedIn outreach</a> for a full comparison.</p>")],
         price="a monthly retainer that includes all sending infrastructure and inbox warm-up.")
 
@@ -421,7 +421,7 @@ def build_services_detail():
         "LinkedIn outreach that turns connections into sales meetings",
         "LinkedIn Outreach & Social Selling Services | ClearLeads",
         "Managed LinkedIn outreach for B2B. Targeted connection and message campaigns from your profile that book qualified meetings alongside cold email.",
-        "<strong>LinkedIn outreach is a managed social-selling service that books meetings from your LinkedIn profile.</strong> ClearLeads targets the right decision-makers, sends personalised connection requests and message sequences from your account, and handles the conversation through to a booked meeting — adding a trusted, face-to-name channel alongside your cold email.",
+        "<strong>LinkedIn outreach is a managed social-selling service that books meetings from your LinkedIn profile.</strong> ClearLeads targets the right decision-makers, sends personalised connection requests and message sequences from your account, and handles the conversation through to a booked meeting, adding a trusted, face-to-name channel alongside your cold email.",
         ["ICP-based targeting using LinkedIn Sales Navigator",
          "Optimisation of your profile to convert visitors",
          "Personalised connection requests and multi-step message sequences",
@@ -443,15 +443,15 @@ def build_services_detail():
          ("Do I need Sales Navigator?",
           "<p>It's strongly recommended for precise targeting and higher-quality lists. We'll help you set it up if you don't have it.</p>"),
          ("Can you run LinkedIn and cold email together?",
-          "<p>Absolutely — multi-channel sequences that touch a prospect on both email and LinkedIn consistently book more meetings than either alone.</p>")],
+          "<p>Absolutely. Multi-channel sequences that touch a prospect on both email and LinkedIn consistently book more meetings than either alone.</p>")],
         price="a monthly retainer per active sending profile.")
 
     service_page(
         "lead-lists", "Lead List Building & Data",
         "Verified lead lists and B2B data built to your ICP",
         "B2B Lead List Building & Data Services | ClearLeads",
-        "Verified, targeted B2B lead lists built to your ideal customer profile. Accurate contact data with valid emails and direct info — a low-risk entry point to outbound.",
-        "<strong>Lead list building is a service that delivers verified, ICP-matched prospect data ready for outreach.</strong> ClearLeads researches and compiles targeted lists of decision-makers — job title, company, verified business email, and LinkedIn — then triple-verifies every record so you launch campaigns on clean data instead of bounces.",
+        "Verified, targeted B2B lead lists built to your ideal customer profile. Accurate contact data with valid emails and direct info. A low-risk entry point to outbound.",
+        "<strong>Lead list building is a service that delivers verified, ICP-matched prospect data ready for outreach.</strong> ClearLeads researches and compiles targeted lists of decision-makers (job title, company, verified business email, and LinkedIn), then triple-verifies every record so you launch campaigns on clean data instead of bounces.",
         ["Ideal customer profile defined with you",
          "Sourcing across premium B2B databases and manual research",
          "Verified business emails with low bounce guarantee",
@@ -469,19 +469,19 @@ def build_services_detail():
         [("How accurate is the data?",
           "<p>We triple-verify every email and target 97%+ accuracy with under 3% bounce. Any records that slip through verification are replaced.</p>"),
          ("What fields do I get?",
-          "<p>Typically full name, job title, company, company size, industry, verified business email, LinkedIn URL, and location — plus any custom fields your campaigns need.</p>"),
+          "<p>Typically full name, job title, company, company size, industry, verified business email, LinkedIn URL, and location, plus any custom fields your campaigns need.</p>"),
          ("Is the data GDPR-compliant?",
           "<p>We source business contact data on a legitimate-interest basis and provide only professional, role-based information. You remain the controller for how it's used in outreach.</p>"),
          ("Can this lead into a full campaign?",
-          "<p>Yes — many clients start with a list, then have us run the outreach on it. It's the lowest-risk way to see how our data and process perform.</p>")],
+          "<p>Yes. Many clients start with a list, then have us run the outreach on it. It's the lowest-risk way to see how our data and process perform.</p>")],
         price="a per-list or per-verified-record fee, quoted to your criteria.")
 
     service_page(
         "database-reactivation", "Database Reactivation",
         "Database reactivation that revives cold and dormant leads",
         "Database Reactivation Services | ClearLeads",
-        "Database reactivation services that revive old, cold, and dormant leads with fresh sequences — turning a list you already own into new booked meetings and pipeline.",
-        "<strong>Database reactivation is a service that turns your dormant leads into new sales meetings.</strong> ClearLeads takes the old, cold, and unconverted contacts already in your CRM, cleans and re-verifies them, and runs fresh, relevant multi-channel sequences to re-engage buyers whose timing may finally be right — pipeline from a list you've already paid for.",
+        "Database reactivation services that revive old, cold, and dormant leads with fresh sequences, turning a list you already own into new booked meetings and pipeline.",
+        "<strong>Database reactivation is a service that turns your dormant leads into new sales meetings.</strong> ClearLeads takes the old, cold, and unconverted contacts already in your CRM, cleans and re-verifies them, and runs fresh, relevant multi-channel sequences to re-engage buyers whose timing may finally be right. That's pipeline from a list you've already paid for.",
         ["Audit and cleansing of your existing database",
          "Re-verification of stale email and contact data",
          "Segmentation by past intent, source, and recency",
@@ -499,7 +499,7 @@ def build_services_detail():
         [("Why reactivate instead of buying new leads?",
           "<p>Contacts already in your database know your brand and once showed interest, so they convert cheaper and faster than cold-sourced leads. Reactivation typically costs around 60% less per meeting.</p>"),
          ("Won't these leads be annoyed to hear from us?",
-          "<p>Not when the message is relevant. We lead with a genuine reason to reconnect — a new capability, a changed price, a relevant result — and always honour opt-outs.</p>"),
+          "<p>Not when the message is relevant. We lead with a genuine reason to reconnect (a new capability, a changed price, a relevant result) and always honour opt-outs.</p>"),
          ("What if the data is really old?",
           "<p>We re-verify and cleanse first, dropping dead records and updating what we can, so you're only messaging reachable, valid contacts.</p>"),
          ("How fast does reactivation work?",
@@ -508,10 +508,10 @@ def build_services_detail():
 
     service_page(
         "outbound-system-setup", "Outbound System Setup",
-        "Outbound system setup — your outreach machine, built once",
+        "Outbound system setup: your outreach machine, built once",
         "Outbound System Setup & Build | ClearLeads",
         "A one-time outbound system build: sending infrastructure, tooling, ICP, sequences, and playbooks. We set up your outreach machine so your team can run it in-house.",
-        "<strong>Outbound system setup is a one-time build of the complete infrastructure your team needs to run outreach in-house.</strong> ClearLeads configures your domains, inboxes, tools, CRM, ICP, sequences, and reporting, then hands you a documented, ready-to-run outbound engine — ideal if you want to own the channel rather than outsource it.",
+        "<strong>Outbound system setup is a one-time build of the complete infrastructure your team needs to run outreach in-house.</strong> ClearLeads configures your domains, inboxes, tools, CRM, ICP, sequences, and reporting, then hands you a documented, ready-to-run outbound engine. Ideal if you want to own the channel rather than outsource it.",
         ["Sending infrastructure: domains, inboxes, warm-up, authentication",
          "Tool stack selection and configuration",
          "ICP definition and target-account framework",
@@ -548,16 +548,16 @@ def build_how():
         ("How involved do we need to be?",
          "<p>Lightly. You approve strategy and messaging up front and take the meetings we book. We handle prospecting, sending, and reply management day to day, and report weekly.</p>"),
         ("How do you report progress?",
-         "<p>You get a live dashboard plus a weekly numbers call covering sends, reply rates, and meetings booked — with next-step optimisations.</p>"),
+         "<p>You get a live dashboard plus a weekly numbers call covering sends, reply rates, and meetings booked, with next-step optimisations.</p>"),
     ]
     steps_full = [
         ("Discovery & ICP", "We run a kickoff to define your ideal customer profile, sharpen your positioning, and agree exactly what a 'qualified meeting' means for you. This is where good outbound is won or lost.",
          ["Ideal customer profile & target accounts", "Offer and messaging positioning", "Qualification criteria agreed", "Meeting forecast set"]),
         ("Build & infrastructure", "We stand up dedicated sending infrastructure, warm the inboxes, build your verified prospect list, and write channel-specific copy. Everything is engineered for the primary inbox.",
          ["Dedicated domains & inboxes warmed", "SPF/DKIM/DMARC authenticated", "Verified ICP prospect list", "Email & LinkedIn copy written and tested"]),
-        ("Launch & book", "Sequences go live across email and LinkedIn. Our team handles every reply — questions, objections, scheduling — and books qualified meetings straight to your calendar with full context.",
+        ("Launch & book", "Sequences go live across email and LinkedIn. Our team handles every reply (questions, objections, scheduling) and books qualified meetings straight to your calendar with full context.",
          ["Multi-channel sequences live", "Human reply handling & qualification", "Meetings booked to your calendar", "Context notes for every meeting"]),
-        ("Optimise & scale", "We report weekly on real numbers, A/B test copy and lists, retire what underperforms, and scale what converts — so cost per meeting drops and pipeline compounds month over month.",
+        ("Optimise & scale", "We report weekly on real numbers, A/B test copy and lists, retire what underperforms, and scale what converts, so cost per meeting drops and pipeline compounds month over month.",
          ["Weekly reporting & numbers call", "A/B testing of copy and lists", "Continuous deliverability monitoring", "Scale winning segments"]),
     ]
     blocks = ""
@@ -582,14 +582,14 @@ def build_how():
     <div class="narrow">
       <span class="eyebrow">How it works</span>
       <h1>How ClearLeads books qualified meetings for you</h1>
-      <p class="lede mt-1">A transparent, four-stage system. You approve the strategy and take the meetings — we build the engine, run the outreach, and prove it with weekly numbers.</p>
+      <p class="lede mt-1">A transparent, four-stage system. You approve the strategy and take the meetings; we build the engine, run the outreach, and prove it with weekly numbers.</p>
       <div class="hero-cta mt-2"><a href="{BOOK}" class="btn btn-primary btn-lg">Book a call {A}</a></div>
     </div>
   </div>
 </section>
 <section class="section-tight">
   <div class="container narrow">
-    <p class="answer"><strong>ClearLeads books meetings in four stages: discovery, build, launch, and optimise.</strong> We define your ICP and offer, stand up warmed sending infrastructure with verified lists and copy, launch multi-channel outreach with human reply handling, and then report and optimise weekly — typically going live within 14 days.</p>
+    <p class="answer"><strong>ClearLeads books meetings in four stages: discovery, build, launch, and optimise.</strong> We define your ICP and offer, stand up warmed sending infrastructure with verified lists and copy, launch multi-channel outreach with human reply handling, and then report and optimise weekly, typically going live within 14 days.</p>
   </div>
 </section>
 {blocks}
@@ -655,7 +655,7 @@ def build_results():
   <div class="container narrow center">
     <span class="eyebrow on-dark">A note on numbers</span>
     <h2>We forecast honestly and report weekly</h2>
-    <p>Outbound results vary by market, offer, and deal size. We won't promise a number we can't defend — instead we give you a realistic forecast up front and show the actual sends, replies, and meetings every single week.</p>
+    <p>Outbound results vary by market, offer, and deal size. We won't promise a number we can't defend. Instead, we give you a realistic forecast up front and show the actual sends, replies, and meetings every single week.</p>
     <a href="{BOOK}" class="btn btn-primary btn-lg mt-1">Get your forecast {A}</a>
   </div>
 </section>
@@ -672,7 +672,7 @@ def build_results():
 def build_about():
     values = [
         ("target", "Meetings over metrics", "We're paid to book qualified meetings, not to inflate open rates. Every decision ladders up to pipeline."),
-        ("shield", "Radical transparency", "Real numbers, every week. If something isn't working we tell you — then we fix it."),
+        ("shield", "Radical transparency", "Real numbers, every week. If something isn't working we tell you, then we fix it."),
         ("bolt", "Speed with craft", "Live in about 14 days, but never at the expense of deliverability or message quality."),
     ]
     vcells = "".join(f'<div class="card"><div class="ico">{ICONS[i]}</div><h3>{t}</h3><p>{d}</p></div>' for i, t, d in values)
@@ -680,9 +680,9 @@ def build_about():
         ("Where is ClearLeads based?",
          "<p>We're a distributed B2B lead generation team serving clients across North America, Europe, and Asia, with operational roots in India. Outbound is run in your prospects' time zones.</p>"),
         ("Who will run my campaigns?",
-         "<p>A dedicated strategist plus reply-handling specialists — not an anonymous queue. You'll know your team and speak with them on the weekly call.</p>"),
+         "<p>A dedicated strategist plus reply-handling specialists, not an anonymous queue. You'll know your team and speak with them on the weekly call.</p>"),
         ("Why the name ClearLeads?",
-         "<p>Because outbound is usually a black box. We built the opposite: clear targeting, clear messaging, and clear reporting on the only metric that matters — booked meetings.</p>"),
+         "<p>Because outbound is usually a black box. We built the opposite: clear targeting, clear messaging, and clear reporting on the only metric that matters: booked meetings.</p>"),
     ]
     body = f'''
 <div class="container crumb"><a href="./">Home</a> / About</div>
@@ -691,7 +691,7 @@ def build_about():
     <div class="narrow">
       <span class="eyebrow">About ClearLeads</span>
       <h1>We build pipeline for B2B teams that would rather be closing</h1>
-      <p class="lede mt-1">ClearLeads exists because most companies know outbound works but don't have the time, tooling, or patience to run it well. So we run it for them — and we report every number along the way.</p>
+      <p class="lede mt-1">ClearLeads exists because most companies know outbound works but don't have the time, tooling, or patience to run it well. So we run it for them, and we report every number along the way.</p>
       <div class="hero-cta mt-2"><a href="{BOOK}" class="btn btn-primary btn-lg">Book a call {A}</a></div>
     </div>
   </div>
@@ -700,9 +700,9 @@ def build_about():
   <div class="container narrow">
     <p class="answer"><strong>ClearLeads is a B2B lead generation agency specialising in appointment setting and outbound outreach.</strong> We help B2B companies book qualified sales meetings through done-for-you cold email and LinkedIn campaigns, combining verified data, strong messaging, and honest weekly reporting so clients get pipeline they can trust.</p>
     <h2 class="mt-3">Our story</h2>
-    <p>ClearLeads started with a simple frustration: talented sales teams stuck doing their own prospecting, and outbound "experts" hiding behind vanity metrics. We'd seen how much pipeline a well-built outbound system could produce — and how rarely it was actually built well.</p>
+    <p>ClearLeads started with a simple frustration: talented sales teams stuck doing their own prospecting, and outbound "experts" hiding behind vanity metrics. We'd seen how much pipeline a well-built outbound system could produce, and how rarely it was actually built well.</p>
     <p>So we assembled a team obsessed with two things: landing in the primary inbox, and booking meetings worth taking. No black boxes, no meaningless dashboards. Just clear targeting, clear messaging, and a weekly call where we show you exactly what happened and what's next.</p>
-    <p>Today we run outbound for B2B SaaS, consultancies, agencies, and service businesses across the globe — and we're still measured on the same single number: qualified meetings booked.</p>
+    <p>Today we run outbound for B2B SaaS, consultancies, agencies, and service businesses across the globe, and we're still measured on the same single number: qualified meetings booked.</p>
   </div>
 </section>
 <section class="bg-soft">
@@ -739,13 +739,13 @@ def build_contact():
     <div class="narrow">
       <span class="eyebrow on-dark">Book a call</span>
       <h1>Let's fill your calendar with qualified meetings</h1>
-      <p class="hero-sub">Grab a 30-minute strategy call. We'll map your ICP, tell you honestly whether outbound fits, and give you a realistic forecast and quote — no pressure, no long contracts.</p>
+      <p class="hero-sub">Grab a 30-minute strategy call. We'll map your ICP, tell you honestly whether outbound fits, and give you a realistic forecast and quote. No pressure, no long contracts.</p>
     </div>
   </div>
 </section>
 <section>
   <div class="container">
-    <p class="answer" style="max-width:760px;margin:0 auto 40px"><strong>Booking a call with ClearLeads takes about 30 minutes.</strong> We'll discuss your ideal customer, your offer, and your goals, then show you the plan and a realistic meeting forecast. You'll leave the call knowing exactly what outbound could produce for you and what it would cost — whether or not you work with us.</p>
+    <p class="answer" style="max-width:760px;margin:0 auto 40px"><strong>Booking a call with ClearLeads takes about 30 minutes.</strong> We'll discuss your ideal customer, your offer, and your goals, then show you the plan and a realistic meeting forecast. You'll leave the call knowing exactly what outbound could produce for you and what it would cost, whether or not you work with us.</p>
     <div class="book-grid">
       <div>
         <h2>Pick a time</h2>
@@ -789,7 +789,7 @@ def build_contact():
         // fall back to opening a pre-filled email so a lead is never silently dropped.
         (function(){{
           var f = document.getElementById('lead-form'), key = {json.dumps(FORM_KEY)};
-          var thanks = '<div class="callout"><strong>Thanks — we\\'ll be in touch within one business day.</strong></div>';
+          var thanks = '<div class="callout"><strong>Thanks! We\\'ll be in touch within one business day.</strong></div>';
           if (location.search.indexOf('sent=1') > -1) {{ f.innerHTML = thanks; return; }}
           f.addEventListener('submit', function(e){{
             e.preventDefault();
@@ -828,16 +828,16 @@ def build_contact():
 '''
     page("contact.html",
          "Book a Call | ClearLeads B2B Lead Generation",
-         "Book a free 30-minute strategy call with ClearLeads. We'll map your ICP, forecast qualified meetings, and give you a fixed quote — no pressure, no long contracts.",
+         "Book a free 30-minute strategy call with ClearLeads. We'll map your ICP, forecast qualified meetings, and give you a fixed quote. No pressure, no long contracts.",
          body, schemas=[faq_schema(faqs)], crumbs=[("Book a call", "contact.html")])
 
 # ------------------------------------------------------------------
 # BLOG INDEX + ARTICLES
 # ------------------------------------------------------------------
-# (slug, title, excerpt, tag, published, modified) — newest first on the blog index
+# (slug, title, excerpt, tag, published, modified); newest first on the blog index
 ARTICLES = [
     ("outsourced-sdr-vs-in-house", "Outsourced SDR vs in-house SDR: cost, ramp time, and results",
-     "The fully-loaded cost of an in-house SDR versus an outsourced SDR agency, side by side — and how to decide.", "Strategy",
+     "The fully-loaded cost of an in-house SDR versus an outsourced SDR agency, side by side, and how to decide.", "Strategy",
      "2026-11-03", "2026-11-03"),
     ("how-to-choose-a-lead-generation-agency", "How to choose a B2B lead generation agency: 12 questions to ask",
      "A buyer's checklist for vetting lead generation and appointment-setting agencies before you sign.", "Buying guide",
@@ -846,16 +846,16 @@ ARTICLES = [
      "What appointment setters do, how the process works, what it costs, and when it beats hiring SDRs.", "Fundamentals",
      "2026-11-03", "2026-11-03"),
     ("cold-email-reply-rate-benchmarks", "What is a good cold email reply rate? 2026 benchmarks",
-     "Realistic B2B cold email open, reply, and meeting rates — and the levers that move each one.", "Benchmarks",
+     "Realistic B2B cold email open, reply, and meeting rates, and the levers that move each one.", "Benchmarks",
      "2026-11-03", "2026-11-03"),
     ("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?",
      "A clear breakdown of appointment-setting pricing models, real price ranges, and how to work out your cost per meeting.", "Pricing",
      "2026-01-15", "2026-11-03"),
     ("cold-email-vs-linkedin-outreach", "Cold email vs LinkedIn outreach: which books more meetings?",
-     "How the two biggest outbound channels compare on reach, reply rates, cost, and when to use each — or both.", "Strategy",
+     "How the two biggest outbound channels compare on reach, reply rates, cost, and when to use each (or both).", "Strategy",
      "2026-01-15", "2026-11-03"),
     ("cold-email-deliverability", "Cold email deliverability: how we land in the inbox",
-     "The exact setup — domains, warm-up, authentication, and sending discipline — that keeps cold email out of spam.", "Deliverability",
+     "The exact setup (domains, warm-up, authentication, and sending discipline) that keeps cold email out of spam.", "Deliverability",
      "2026-01-15", "2026-11-03"),
 ]
 ARTICLE_DATES = {a[0]: (a[4], a[5]) for a in ARTICLES}
@@ -877,7 +877,7 @@ def build_blog_index():
     <div class="narrow">
       <span class="eyebrow">Resources</span>
       <h1>Outbound & lead generation, explained</h1>
-      <p class="lede mt-1">Practical guides on appointment setting, cold email, LinkedIn outreach, and building B2B pipeline — written to actually answer the question, not pad it out.</p>
+      <p class="lede mt-1">Practical guides on appointment setting, cold email, LinkedIn outreach, and building B2B pipeline, written to actually answer the question, not pad it out.</p>
     </div>
   </div>
 </section>
@@ -968,7 +968,7 @@ def build_articles():
 <li><strong>Data.</strong> Niche or hard-to-source ICPs raise list-building cost.</li>
 </ul>
 <h2>How to calculate your real cost per meeting</h2>
-<p>Divide the total monthly cost by qualified meetings booked. A $4,000 retainer that produces 20 qualified meetings is $200 per meeting. Then compare that to what a meeting is worth: if your average deal is $15,000 and you close 1 in 5 meetings, each meeting is worth $3,000 in expected revenue — making $200 an easy trade.</p>
+<p>Divide the total monthly cost by qualified meetings booked. A $4,000 retainer that produces 20 qualified meetings is $200 per meeting. Then compare that to what a meeting is worth: if your average deal is $15,000 and you close 1 in 5 meetings, each meeting is worth $3,000 in expected revenue, making $200 an easy trade.</p>
 <div class="callout"><strong style="color:var(--ink)">Rule of thumb:</strong> if your cost per qualified meeting is under 10% of your average deal value, outbound is almost always worth scaling.</div>
 <h2>Watch-outs when comparing quotes</h2>
 <ul>
@@ -982,7 +982,7 @@ def build_articles():
         ("How much does appointment setting cost per month?",
          "<p>Most B2B appointment-setting retainers run between $2,000 and $6,000 per month, depending on meeting volume, market difficulty, and how many channels you use. Pay-per-meeting deals typically range from $100 to $400 per qualified meeting.</p>"),
         ("Is pay-per-meeting cheaper than a retainer?",
-         "<p>Not necessarily. Pay-per-meeting shifts risk to the agency but can cost more per booking and can incentivise loose qualification. A retainer usually produces a lower cost per meeting once the system matures — provided volume is there.</p>"),
+         "<p>Not necessarily. Pay-per-meeting shifts risk to the agency but can cost more per booking and can incentivise loose qualification. A retainer usually produces a lower cost per meeting once the system matures, provided volume is there.</p>"),
         ("What's a good cost per qualified meeting?",
          "<p>If your cost per qualified meeting is under about 10% of your average deal value, the economics work well. For a $15,000 average deal, anything under roughly $1,500 per meeting is healthy, and most programs come in far below that.</p>"),
     ]
@@ -1000,7 +1000,7 @@ def build_articles():
     # 2) Cold email vs LinkedIn
     sections2 = '''
 <h2>Reach and volume</h2>
-<p>Cold email wins on raw scale. A well-run program can contact thousands of prospects a month across multiple inboxes. LinkedIn is capped by platform limits — realistically 20–30 new connections a day per profile — so its ceiling is lower but its touches are warmer.</p>
+<p>Cold email wins on raw scale. A well-run program can contact thousands of prospects a month across multiple inboxes. LinkedIn is capped by platform limits (realistically 20–30 new connections a day per profile), so its ceiling is lower but its touches are warmer.</p>
 <h2>Reply rates and trust</h2>
 <p>LinkedIn messages usually see higher reply rates (15–25%) because there's a face, a profile, and social proof attached. Cold email reply rates are lower per message (4–8% positive) but the far larger volume often produces more total conversations.</p>
 <table>
@@ -1012,7 +1012,7 @@ def build_articles():
 <tr><td>Setup complexity</td><td>Higher (deliverability)</td><td>Lower</td></tr>
 </table>
 <h2>Cost per meeting</h2>
-<p>Because email scales cheaply, its cost per meeting is usually lower at volume. LinkedIn costs more per touch but can convert considered, high-value buyers who would ignore a cold email — so on big deals its cost per meeting can be very competitive.</p>
+<p>Because email scales cheaply, its cost per meeting is usually lower at volume. LinkedIn costs more per touch but can convert considered, high-value buyers who would ignore a cold email, so on big deals its cost per meeting can be very competitive.</p>
 <h2>The real answer: use both</h2>
 <p>The framing "email vs LinkedIn" is a trap. The best-performing outbound sequences touch a prospect on both channels: an email lands, a LinkedIn connection reinforces it, a follow-up references the earlier touch. Multi-channel sequences consistently book more meetings than either channel run alone, because different buyers respond to different first touches.</p>
 <div class="callout"><strong style="color:var(--ink)">Bottom line:</strong> lead with email for reach, layer LinkedIn for trust, and sequence them together. That combination beats any single channel.</div>
@@ -1021,16 +1021,16 @@ def build_articles():
         ("Which books more meetings, cold email or LinkedIn?",
          "<p>At volume, cold email usually books more total meetings because it reaches far more prospects. LinkedIn books fewer but often higher-trust meetings. Running both in a coordinated sequence beats either channel alone.</p>"),
         ("Is LinkedIn outreach better for high-value deals?",
-         "<p>Often yes. For considered, high-ticket B2B purchases, the trust and personalisation of LinkedIn can convert buyers who would ignore a cold email — making its cost per meeting competitive despite lower volume.</p>"),
+         "<p>Often yes. For considered, high-ticket B2B purchases, the trust and personalisation of LinkedIn can convert buyers who would ignore a cold email, making its cost per meeting competitive despite lower volume.</p>"),
         ("Can you run cold email and LinkedIn at the same time?",
-         "<p>Yes, and you should. Coordinated multi-channel sequences — an email plus a LinkedIn touch that reference each other — reliably outperform single-channel outreach.</p>"),
+         "<p>Yes, and you should. Coordinated multi-channel sequences (an email plus a LinkedIn touch that reference each other) reliably outperform single-channel outreach.</p>"),
     ]
     article("cold-email-vs-linkedin-outreach",
             "Cold Email vs LinkedIn: Which Books More Meetings?",
             "Cold email offers scale and lower cost per meeting; LinkedIn offers higher reply rates and trust. Compare both channels and learn why a combined sequence wins.",
             "Cold email vs LinkedIn outreach: which books more meetings?",
             "Strategy", 5,
-            "How the two biggest outbound channels compare — and why the smartest teams stop choosing between them.",
+            "How the two biggest outbound channels compare, and why the smartest teams stop choosing between them.",
             "<strong>Cold email books more meetings at scale thanks to far greater reach, while LinkedIn outreach earns higher reply rates and trust per message.</strong> Email offers the lowest cost per meeting at volume; LinkedIn converts considered, high-value buyers. The highest-performing programs run both channels together in a coordinated sequence rather than picking one.",
             sections2, faqs2,
             related=[("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?"),
@@ -1050,7 +1050,7 @@ def build_articles():
 <li><strong>Write like a human.</strong> Short, specific, low-link messages that earn replies. Engagement is itself a positive deliverability signal.</li>
 </ol>
 <h2>Monitor, don't set-and-forget</h2>
-<p>Deliverability drifts. We monitor inbox placement, reply rates, and spam signals continuously, rotate inboxes, and pull back volume the moment metrics dip — before it becomes a problem you can see in booked meetings.</p>
+<p>Deliverability drifts. We monitor inbox placement, reply rates, and spam signals continuously, rotate inboxes, and pull back volume the moment metrics dip, before it becomes a problem you can see in booked meetings.</p>
 <div class="callout"><strong style="color:var(--ink)">The one-line version:</strong> dedicated warmed domains + full authentication + low per-inbox volume + verified lists + human copy = the primary inbox.</div>
 '''
     faqs3 = [
@@ -1087,7 +1087,7 @@ def build_articles_buyer():
 <tr><td>Recruiting and management time</td><td>$8,000–$20,000</td></tr>
 <tr><td><strong>Fully-loaded total</strong></td><td><strong>$90,000–$160,000</strong></td></tr>
 </table>
-<p>Then factor in <strong>ramp time</strong> — usually around three months before a new SDR books at full pace — and <strong>turnover</strong>: SDR tenure is often under two years, so you pay the hiring and ramp cost again.</p>
+<p>Then factor in <strong>ramp time</strong> (usually around three months before a new SDR books at full pace) and <strong>turnover</strong>: SDR tenure is often under two years, so you pay the hiring and ramp cost again.</p>
 <h2>The cost of an outsourced SDR agency</h2>
 <p>An outsourced SDR or appointment-setting agency usually charges a monthly retainer of roughly <strong>$2,000–$6,000</strong> ($24,000–$72,000 a year), sometimes with a per-meeting component. That fee normally includes the people, the sending infrastructure, the data, and the tooling.</p>
 <h2>Side-by-side comparison</h2>
@@ -1113,7 +1113,7 @@ def build_articles_buyer():
 <li>You don't want to own domains, inbox warm-up, data, and tooling.</li>
 <li>Your founders or AEs are still doing their own prospecting.</li>
 </ul>
-<div class="callout"><strong style="color:var(--ink)">A common path:</strong> outsource first to prove the channel and the messaging, then hire in-house SDRs onto a system that already works — or keep the agency and let your AEs focus purely on closing.</div>
+<div class="callout"><strong style="color:var(--ink)">A common path:</strong> outsource first to prove the channel and the messaging, then hire in-house SDRs onto a system that already works, or keep the agency and let your AEs focus purely on closing.</div>
 '''
     faqs = [
         ("Is an outsourced SDR cheaper than hiring one?",
@@ -1141,11 +1141,11 @@ def build_articles_buyer():
 <li><strong>How do you define a qualified meeting?</strong> Get it in writing: title, company size, geography, and intent. Vague definitions are how agencies hit targets that don't turn into pipeline.</li>
 <li><strong>What happens with no-shows?</strong> Good agencies replace meetings that don't happen for reasons within their control.</li>
 <li><strong>Can I speak to a current client in my space?</strong> A reference call beats any case study PDF.</li>
-<li><strong>What forecast would you give me — and why?</strong> A credible agency gives a range and explains its assumptions. Be wary of anyone who guarantees a precise number before seeing your offer.</li>
+<li><strong>What forecast would you give me, and why?</strong> A credible agency gives a range and explains its assumptions. Be wary of anyone who guarantees a precise number before seeing your offer.</li>
 </ol>
 <h2>Questions about how they work</h2>
 <ol start="5">
-<li><strong>Whose domains do you send from?</strong> The right answer is dedicated lookalike domains — never your primary domain.</li>
+<li><strong>Whose domains do you send from?</strong> The right answer is dedicated lookalike domains, never your primary domain.</li>
 <li><strong>How do you protect deliverability?</strong> Listen for inbox warm-up, SPF/DKIM/DMARC, low volume per inbox, and verified lists. See our <a href="cold-email-deliverability.html">deliverability guide</a> for what good looks like.</li>
 <li><strong>Who writes the copy, and do I approve it?</strong> You should approve messaging before anything is sent under your brand.</li>
 <li><strong>Who handles replies?</strong> Real people qualifying and scheduling convert far more replies into meetings than auto-responders.</li>
@@ -1163,7 +1163,7 @@ def build_articles_buyer():
 <li>Reporting on opens and "leads" instead of qualified meetings.</li>
 <li>Sending from your main domain.</li>
 <li>Twelve-month lock-ins with no performance exit.</li>
-<li>No access to the raw activity — sends, replies, and meetings.</li>
+<li>No access to the raw activity: sends, replies, and meetings.</li>
 </ul>
 <div class="callout"><strong style="color:var(--ink)">Shortcut:</strong> the best agencies are measured on qualified meetings booked, report weekly on real numbers, and let you leave if they don't deliver.</div>
 '''
@@ -1180,7 +1180,7 @@ def build_articles_buyer():
             "Vetting a B2B lead generation or appointment-setting agency? Ask these 12 questions about qualified meetings, deliverability, reply handling, reporting, and contracts.",
             "How to choose a B2B lead generation agency: 12 questions to ask",
             "Buying guide", 7,
-            "A practical checklist for comparing agencies — and the red flags that should end the conversation.",
+            "A practical checklist for comparing agencies, and the red flags that should end the conversation.",
             "<strong>To choose a B2B lead generation agency, judge it on how it defines and delivers qualified meetings.</strong> Ask how a qualified meeting is defined, whose domains they send from, how they protect deliverability, who handles replies, how they report, and what the contract terms are. The best agencies report weekly on meetings booked and work month-to-month after a short ramp.",
             sections, faqs,
             related=[("outsourced-sdr-vs-in-house", "Outsourced SDR vs in-house SDR: cost, ramp time, and results"),
@@ -1215,12 +1215,12 @@ def build_articles_buyer():
 <tr><td>Who does follow-up</td><td>Often your team</td><td>The appointment setter</td></tr>
 </table>
 <h2>In-house setters vs an appointment-setting agency</h2>
-<p>You can hire SDRs to set appointments, or outsource to an agency that brings the people, data, tooling, and deliverability know-how. Agencies are typically faster to launch and cheaper than a fully-loaded hire — we break the numbers down in <a href="outsourced-sdr-vs-in-house.html">Outsourced SDR vs in-house SDR</a>.</p>
+<p>You can hire SDRs to set appointments, or outsource to an agency that brings the people, data, tooling, and deliverability know-how. Agencies are typically faster to launch and cheaper than a fully-loaded hire. We break the numbers down in <a href="outsourced-sdr-vs-in-house.html">Outsourced SDR vs in-house SDR</a>.</p>
 <h2>Who appointment setting is for</h2>
 <ul>
 <li>B2B companies with a proven offer and a team that can close.</li>
 <li>Deal sizes that justify the cost of a sales meeting (usually $5,000+ in lifetime value).</li>
-<li>A definable buyer — a clear title, industry, and company size.</li>
+<li>A definable buyer: a clear title, industry, and company size.</li>
 </ul>
 '''
     faqs = [
@@ -1229,7 +1229,7 @@ def build_articles_buyer():
         ("What does an appointment setter do?",
          "<p>An appointment setter builds prospect lists, runs outreach, handles replies and objections, qualifies prospects against agreed criteria, and books meetings directly onto a sales rep's calendar with context notes.</p>"),
         ("Is appointment setting the same as telemarketing?",
-         "<p>No. Modern B2B appointment setting is mostly multi-channel — cold email and LinkedIn first, phone sometimes — and is measured on qualified meetings rather than call volume.</p>"),
+         "<p>No. Modern B2B appointment setting is mostly multi-channel (cold email and LinkedIn first, phone sometimes) and is measured on qualified meetings rather than call volume.</p>"),
         ("How much does appointment setting cost?",
          "<p>Most B2B appointment-setting agencies charge $2,000–$6,000 per month on retainer, or $100–$400 per qualified meeting on a pay-per-meeting model.</p>"),
     ]
@@ -1238,8 +1238,8 @@ def build_articles_buyer():
             "B2B appointment setting: finding decision-makers, reaching them by email and LinkedIn, qualifying interest, and booking meetings. Process, cost, fit.",
             "What is B2B appointment setting? A complete guide",
             "Fundamentals", 6,
-            "The process, the people, the price — and how it differs from plain lead generation.",
-            "<strong>B2B appointment setting is the process of booking qualified sales meetings with decision-makers on your behalf.</strong> An appointment setter builds a targeted prospect list, contacts buyers through cold email, LinkedIn, or phone, handles replies, qualifies interest against agreed criteria, and schedules the meeting on your calendar — so your sales team spends its time closing instead of prospecting.",
+            "The process, the people, the price, and how it differs from plain lead generation.",
+            "<strong>B2B appointment setting is the process of booking qualified sales meetings with decision-makers on your behalf.</strong> An appointment setter builds a targeted prospect list, contacts buyers through cold email, LinkedIn, or phone, handles replies, qualifies interest against agreed criteria, and schedules the meeting on your calendar, so your sales team spends its time closing instead of prospecting.",
             sections, faqs,
             related=[("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?"),
                      ("outsourced-sdr-vs-in-house", "Outsourced SDR vs in-house SDR: cost, ramp time, and results")])
@@ -1254,7 +1254,7 @@ def build_articles_buyer():
 <tr><td>Positive reply rate</td><td>&lt;0.5%</td><td>0.5–2%</td><td>2–4%+</td></tr>
 <tr><td>Positive reply → meeting</td><td>&lt;30%</td><td>30–50%</td><td>50%+</td></tr>
 </table>
-<p>These are practical ranges for well-targeted B2B campaigns; your numbers will vary by industry, seniority, and offer. Treat open rates with caution — privacy features in modern mail apps make them unreliable, so replies and meetings are the metrics to manage.</p>
+<p>These are practical ranges for well-targeted B2B campaigns; your numbers will vary by industry, seniority, and offer. Treat open rates with caution: privacy features in modern mail apps make them unreliable, so replies and meetings are the metrics to manage.</p>
 <h2>Why reply rate beats open rate</h2>
 <p>Apple Mail Privacy Protection and image-blocking inflate or hide opens, so an "opened" email may never have been read. Replies and booked meetings can't be faked, which is why we report on those first.</p>
 <h2>The five levers that move reply rate</h2>
@@ -1266,12 +1266,12 @@ def build_articles_buyer():
 <li><strong>Follow-ups.</strong> A large share of replies arrive on the second to fourth touch. Most campaigns stop too early.</li>
 </ol>
 <h2>From reply rate to meetings</h2>
-<p>A useful rule of thumb: 1,000 well-targeted emails at a 2% positive reply rate and a 50% booking rate produces about 10 meetings. Improve any of the three — list quality, positive reply rate, or how fast replies are handled — and meeting volume compounds.</p>
+<p>A useful rule of thumb: 1,000 well-targeted emails at a 2% positive reply rate and a 50% booking rate produces about 10 meetings. Improve any of the three (list quality, positive reply rate, or how fast replies are handled) and meeting volume compounds.</p>
 <div class="callout"><strong style="color:var(--ink)">Fastest win:</strong> respond to positive replies within an hour. Speed to reply is one of the cheapest ways to lift the reply-to-meeting rate.</div>
 '''
     faqs = [
         ("What is a good cold email reply rate?",
-         "<p>For targeted B2B cold email, a total reply rate of 5% or more is strong, and 2–5% is average. A positive reply rate — people expressing interest — of 2% or higher is a strong result.</p>"),
+         "<p>For targeted B2B cold email, a total reply rate of 5% or more is strong, and 2–5% is average. A positive reply rate (people expressing interest) of 2% or higher is a strong result.</p>"),
         ("What is a good cold email open rate?",
          "<p>Open rates are no longer reliable because of mail privacy features that pre-load images. Focus on reply rate, positive reply rate, and meetings booked instead.</p>"),
         ("How many cold emails does it take to book a meeting?",
@@ -1279,7 +1279,7 @@ def build_articles_buyer():
     ]
     article("cold-email-reply-rate-benchmarks",
             "Good Cold Email Reply Rate? 2026 B2B Benchmarks",
-            "A good B2B cold email reply rate is 5%+ total and 2%+ positive. See 2026 benchmarks for bounce, reply, and meeting rates — and the five levers that improve them.",
+            "A good B2B cold email reply rate is 5%+ total and 2%+ positive. See 2026 benchmarks for bounce, reply, and meeting rates, plus the five levers that improve them.",
             "What is a good cold email reply rate? 2026 benchmarks",
             "Benchmarks", 5,
             "Realistic numbers for B2B outbound, why open rates mislead, and how to turn replies into meetings.",
@@ -1318,7 +1318,7 @@ def build_meta_files():
     robots = f"User-agent: *\nAllow: /\nDisallow: /build/\n\n{bots}Sitemap: {SITE}/sitemap.xml\n"
     (b.OUT / "robots.txt").write_text(robots, encoding="utf-8")
     (b.OUT / "llms.txt").write_text(llms_txt(), encoding="utf-8")
-    # CNAME — tells GitHub Pages which custom domain serves this site
+    # CNAME: tells GitHub Pages which custom domain serves this site
     domain = SITE.replace("https://", "").replace("http://", "").rstrip("/")
     (b.OUT / "CNAME").write_text(domain + "\n", encoding="utf-8")
     print(f"wrote sitemap.xml, robots.txt, llms.txt, CNAME ({domain})")
@@ -1332,19 +1332,19 @@ def llms_txt():
 > {NAME} ({SITE}) is a B2B lead generation and appointment setting agency. We book qualified sales meetings directly onto B2B companies' calendars using done-for-you cold email and LinkedIn outreach, verified lead lists, and database reactivation. Clients are typically live within about 14 days and work month-to-month after an initial ramp.
 
 Key facts:
-- What we do: outsourced SDR / appointment setting — prospect list building, multi-channel outreach (cold email + LinkedIn), human reply handling, qualification, and meeting booking with CRM sync and weekly reporting.
+- What we do: outsourced SDR / appointment setting: prospect list building, multi-channel outreach (cold email + LinkedIn), human reply handling, qualification, and meeting booking with CRM sync and weekly reporting.
 - Who it's for: B2B SaaS, agencies, consultancies, professional services, recruiting, fintech, and other B2B companies with a defined ideal customer profile.
 - Pricing: managed appointment-setting programs typically run $2,000–$6,000 per month on retainer; lead lists and one-time outbound system builds are quoted separately.
 - Time to launch: about 14 days (inbox warm-up is the main dependency); first meetings usually within 2–4 weeks.
 - Contracts: no long lock-in; month-to-month after ramp.
-- Regions served: worldwide — mainly North America, the UK, Europe, and Australia (outreach runs in prospects' time zones).
+- Regions served: worldwide, mainly North America, the UK, Europe, and Australia (outreach runs in prospects' time zones).
 - Contact: {b.EMAIL} · Book a strategy call: {SITE}/{BOOK}
 
 ## Services
 {svc}
 
 ## Company
-- [How it works]({SITE}/how-it-works.html): The four-stage process — discovery & ICP, infrastructure build, launch & booking, weekly optimisation.
+- [How it works]({SITE}/how-it-works.html): The four-stage process: discovery & ICP, infrastructure build, launch & booking, weekly optimisation.
 - [Results]({SITE}/results.html): Case studies and representative outcomes.
 - [About]({SITE}/about.html): Who we are and how we work.
 - [Book a call]({SITE}/{BOOK}): Free 30-minute strategy call with a meeting forecast and fixed quote.
