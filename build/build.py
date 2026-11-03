@@ -5,7 +5,7 @@ import os, json, html, pathlib
 
 SITE = "https://clearleads.co"
 NAME = "ClearLeads"
-CSS_VER = "6"   # bump to bust the stylesheet cache on deploy
+CSS_VER = "7"   # bump to bust the stylesheet cache on deploy
 OUT = pathlib.Path(__file__).resolve().parents[1]
 BOOK = "contact.html"      # book-a-call conversion page
 
@@ -58,7 +58,7 @@ def header(prefix=""):
     )
     return f'''<header class="site-header">
   <div class="container nav">
-    <a class="brand" href="{prefix}index.html">{LOGO_SVG}ClearLeads</a>
+    <a class="brand" href="{prefix or './'}">{LOGO_SVG}ClearLeads</a>
     <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">
       <svg viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
@@ -69,7 +69,7 @@ def header(prefix=""):
       <a href="{prefix}how-it-works.html">How It Works</a>
       <a href="{prefix}results.html">Results</a>
       <a href="{prefix}about.html">About</a>
-      <a href="{prefix}blog/index.html">Blog</a>
+      <a href="{prefix}blog/">Blog</a>
       <a href="{prefix}{BOOK}" class="btn btn-primary nav-mobile-cta">Book a call</a>
     </nav>
     <span class="nav-spacer"></span>
@@ -85,18 +85,18 @@ def footer(prefix=""):
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="{prefix}index.html">{LOGO_SVG}ClearLeads</a>
+        <a class="brand" href="{prefix or './'}">{LOGO_SVG}ClearLeads</a>
         <p>Outbound lead generation and appointment setting for B2B teams. We book qualified sales meetings straight to your calendar — you close the deals.</p>
       </div>
-      <div><h4>Services</h4><ul>{svc}</ul></div>
-      <div><h4>Company</h4><ul>
+      <div><h2 class="foot-h">Services</h2><ul>{svc}</ul></div>
+      <div><h2 class="foot-h">Company</h2><ul>
         <li><a href="{prefix}how-it-works.html">How It Works</a></li>
         <li><a href="{prefix}results.html">Results</a></li>
         <li><a href="{prefix}about.html">About</a></li>
-        <li><a href="{prefix}blog/index.html">Blog</a></li>
+        <li><a href="{prefix}blog/">Blog</a></li>
         <li><a href="{prefix}{BOOK}">Contact</a></li>
       </ul></div>
-      <div><h4>Get started</h4><ul>
+      <div><h2 class="foot-h">Get started</h2><ul>
         <li><a href="{prefix}{BOOK}">Book a call</a></li>
         <li><a href="mailto:hello@clearleads.co">hello@clearleads.co</a></li>
         <li><a href="{prefix}results.html">Case studies</a></li>
@@ -158,12 +158,11 @@ OG_IMAGE = f"{SITE}/assets/og-image.png"
 SAME_AS = []
 
 ORG_SCHEMA = {
-    "@context":"https://schema.org","@type":"ProfessionalService","@id":f"{SITE}/#org",
+    "@context":"https://schema.org","@type":"Organization","@id":f"{SITE}/#org",
     "name":NAME,"url":f"{SITE}/","logo":f"{SITE}/assets/logo.png","image":OG_IMAGE,
     "email":EMAIL,"slogan":"Qualified B2B sales meetings, booked on your calendar.",
     "description":"ClearLeads is a B2B lead generation and appointment setting agency. We book qualified sales meetings for B2B companies through done-for-you cold email and LinkedIn outreach, verified lead lists, and database reactivation.",
-    "areaServed":["United States","United Kingdom","Canada","Australia","Europe","India"],
-    "priceRange":"$$",
+    "areaServed":"Worldwide",
     "knowsAbout":["B2B lead generation","Appointment setting","Outsourced SDR","Cold email outreach",
                   "Email deliverability","LinkedIn outreach","Sales prospecting","Lead list building",
                   "Database reactivation","Outbound sales"],

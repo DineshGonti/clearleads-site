@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Page content + copy for ClearLeads. Consumed by build.py."""
+import json
 import build as b
 from build import (page, cta_band, faq_block, faq_schema, arrow, ICONS,
                    SERVICES, svc_icon_html, BOOK, SITE, NAME)
@@ -8,6 +9,10 @@ A = arrow()
 
 # Google Calendar appointment-scheduling links
 BOOKING_SHORT = "https://calendar.app.google/66XrwXoYgtQk2Tpy6"          # share link (fallback / new tab)
+# Web3Forms access key (free; create at web3forms.com with hello@clearleads.co). Public by design.
+# Empty = contact form falls back to opening a pre-filled email.
+FORM_KEY = ""
+
 BOOKING_EMBED = ("https://calendar.google.com/calendar/appointments/schedules/"
                  "AcZssZ3aQT9y510aJiLuXlIPVc-HwWBxe0kSPPZMXJ7B_cB77AJkVo-7pzs6BBDh-lUwLeBKi90_QUWl?gv=true")  # embeddable
 
@@ -148,7 +153,7 @@ def build_home():
           <a href="{BOOK}" class="btn btn-primary btn-lg">Book a call {A}</a>
           <a href="results.html" class="btn btn-ghost on-dark btn-lg">See the results</a>
         </div>
-        <div class="hero-trust"><span class="dot"></span> Live in ~14 days <span class="dot"></span> No long lock-in <span class="dot"></span> Only pay for qualified meetings</div>
+        <div class="hero-trust"><span class="dot"></span> Live in ~14 days <span class="dot"></span> No long lock-in <span class="dot"></span> No-shows replaced free</div>
       </div>
       <div class="hero-card">
         <div class="cap">This week · booked meetings</div>
@@ -209,7 +214,7 @@ def build_home():
 '''
     page("index.html",
          "ClearLeads | B2B Lead Generation Agency & Appointment Setting",
-         "ClearLeads is a B2B lead generation agency that books qualified sales meetings on your calendar via done-for-you cold email and LinkedIn outreach. Live in 14 days. Book a call.",
+         "B2B lead generation agency that books qualified sales meetings on your calendar via done-for-you cold email and LinkedIn outreach. Live in ~14 days.",
          body, schemas=[faq_schema(faqs)], canonical=f"{SITE}/")
 
 # ------------------------------------------------------------------
@@ -232,7 +237,7 @@ def build_services():
          "<p>Either. Many clients use us as their entire outbound engine; others use us to add capacity, test new segments, or cover channels their SDRs don't run. We integrate with your CRM and calendar either way. See <a href='blog/outsourced-sdr-vs-in-house.html'>Outsourced SDR vs in-house SDR</a> for a cost comparison.</p>"),
     ]
     body = f'''
-<div class="container crumb"><a href="index.html">Home</a> / Services</div>
+<div class="container crumb"><a href="./">Home</a> / Services</div>
 <section class="hero">
   <div class="container hero-inner" style="padding-top:48px">
     <div class="narrow">
@@ -278,13 +283,17 @@ def service_page(slug, title, h1, seo_title, meta, answer, included, metrics, wh
         "areaServed": "Worldwide", "audience": {"@type": "BusinessAudience", "audienceType": "B2B companies"},
         "description": b.strip_tags(answer), "url": f"{SITE}/{slug}.html",
     }
+    if slug == "appointment-setting":
+        service_schema["offers"] = {"@type": "Offer", "priceCurrency": "USD",
+            "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": 2000, "maxPrice": 6000,
+                                   "priceCurrency": "USD", "unitText": "MONTH"}}
     price_html = ""
     if price:
         price_html = f'''<div class="callout" style="margin-top:26px">
           <strong style="color:var(--ink)">Typical investment:</strong> {price}
           <a href="{BOOK}" style="margin-left:8px">Get a custom quote {A}</a></div>'''
     body = f'''
-<div class="container crumb"><a href="index.html">Home</a> / <a href="services.html">Services</a> / {title}</div>
+<div class="container crumb"><a href="./">Home</a> / <a href="services.html">Services</a> / {title}</div>
 <section class="hero">
   <div class="container hero-inner" style="padding-top:46px;padding-bottom:56px">
     <div class="narrow">
@@ -345,7 +354,7 @@ def build_services_detail():
         "appointment-setting", "Appointment Setting",
         "Appointment setting services that book qualified B2B meetings",
         "Appointment Setting Services & Company | ClearLeads",
-        "Done-for-you appointment setting services. We book qualified B2B sales meetings straight to your calendar via multi-channel outreach. Only pay for meetings that matter.",
+        "Done-for-you appointment setting services. We book qualified B2B sales meetings straight to your calendar via email and LinkedIn outreach. No-shows replaced free.",
         "<strong>Appointment setting is a done-for-you service where we book qualified sales meetings directly onto your calendar.</strong> ClearLeads identifies decision-makers who fit your ICP, reaches them across email and LinkedIn, handles every reply, qualifies interest against agreed criteria, and schedules the meeting — so your closers only ever talk to real prospects.",
         ["Ideal customer profile and target-account list built to spec",
          "Multi-channel outreach across cold email and LinkedIn",
@@ -411,7 +420,7 @@ def build_services_detail():
         "linkedin-outreach", "LinkedIn Outreach",
         "LinkedIn outreach that turns connections into sales meetings",
         "LinkedIn Outreach & Social Selling Services | ClearLeads",
-        "Managed LinkedIn outreach and social selling for B2B. Targeted connection and messaging campaigns from your profile that book qualified meetings — a strong complement to cold email.",
+        "Managed LinkedIn outreach for B2B. Targeted connection and message campaigns from your profile that book qualified meetings alongside cold email.",
         "<strong>LinkedIn outreach is a managed social-selling service that books meetings from your LinkedIn profile.</strong> ClearLeads targets the right decision-makers, sends personalised connection requests and message sequences from your account, and handles the conversation through to a booked meeting — adding a trusted, face-to-name channel alongside your cold email.",
         ["ICP-based targeting using LinkedIn Sales Navigator",
          "Optimisation of your profile to convert visitors",
@@ -567,7 +576,7 @@ def build_how():
   </div>
 </section>'''
     body = f'''
-<div class="container crumb"><a href="index.html">Home</a> / How It Works</div>
+<div class="container crumb"><a href="./">Home</a> / How It Works</div>
 <section class="hero">
   <div class="container hero-inner" style="padding-top:48px">
     <div class="narrow">
@@ -622,7 +631,7 @@ def build_results():
           <div style="margin-top:auto">{m}</div>
         </div>'''
     body = f'''
-<div class="container crumb"><a href="index.html">Home</a> / Results</div>
+<div class="container crumb"><a href="./">Home</a> / Results</div>
 <section class="hero">
   <div class="container hero-inner" style="padding-top:48px">
     <div class="narrow">
@@ -676,7 +685,7 @@ def build_about():
          "<p>Because outbound is usually a black box. We built the opposite: clear targeting, clear messaging, and clear reporting on the only metric that matters — booked meetings.</p>"),
     ]
     body = f'''
-<div class="container crumb"><a href="index.html">Home</a> / About</div>
+<div class="container crumb"><a href="./">Home</a> / About</div>
 <section class="hero">
   <div class="container hero-inner" style="padding-top:48px">
     <div class="narrow">
@@ -708,7 +717,7 @@ def build_about():
 '''
     page("about.html",
          "About ClearLeads | B2B Lead Generation Agency",
-         "ClearLeads is a B2B lead generation and appointment-setting agency built on verified data, strong messaging, and honest weekly reporting. Meet the team behind your pipeline.",
+         "ClearLeads is a B2B lead generation and appointment-setting agency built on verified data, sharp messaging, and honest weekly reporting.",
          body, schemas=[faq_schema(faqs)], crumbs=[("About", "about.html")])
 
 # ------------------------------------------------------------------
@@ -724,7 +733,7 @@ def build_contact():
          "<p>Onboarding usually begins within a few days of the call, and campaigns go live in about 14 days once inboxes are warmed.</p>"),
     ]
     body = f'''
-<div class="container crumb"><a href="index.html">Home</a> / Book a call</div>
+<div class="container crumb"><a href="./">Home</a> / Book a call</div>
 <section class="hero hero-dark">
   <div class="container hero-inner" style="padding-top:56px;padding-bottom:56px">
     <div class="narrow">
@@ -752,7 +761,12 @@ def build_contact():
       <div>
         <h2>Prefer to send a note?</h2>
         <p class="lede" style="font-size:1.05rem">Tell us a little about your goals and we'll reply within one business day.</p>
-        <form class="lead mt-2" onsubmit="event.preventDefault();this.innerHTML='<div class=&quot;callout&quot;><strong>Thanks — we\\'ll be in touch within one business day.</strong></div>';">
+        <form class="lead mt-2" id="lead-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="{FORM_KEY}">
+          <input type="hidden" name="subject" value="New ClearLeads enquiry">
+          <input type="hidden" name="from_name" value="clearleads.co contact form">
+          <input type="hidden" name="redirect" value="{SITE}/contact.html?sent=1">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
           <div><label for="name">Name</label><input id="name" name="name" required placeholder="Jane Doe"></div>
           <div><label for="email">Work email</label><input id="email" type="email" name="email" required placeholder="jane@company.com"></div>
           <div><label for="company">Company</label><input id="company" name="company" placeholder="Company Inc."></div>
@@ -766,9 +780,37 @@ def build_contact():
               <option>Outbound System Setup</option>
               <option>Not sure yet</option>
             </select></div>
-          <div><label for="msg">Anything we should know?</label><textarea id="msg" name="msg" rows="4" placeholder="Our ICP is… our goal is…"></textarea></div>
+          <div><label for="msg">Anything we should know?</label><textarea id="msg" name="message" rows="4" placeholder="Our ICP is… our goal is…"></textarea></div>
           <button class="btn btn-primary btn-lg" type="submit">Request a call {A}</button>
+          <p class="form-error" role="alert" hidden style="color:#B42318;margin:0">Something went wrong sending your message. Please email <a href="mailto:{b.EMAIL}">{b.EMAIL}</a> instead.</p>
         </form>
+        <script>
+        // Web3Forms emails each enquiry to {b.EMAIL}. With no access key configured,
+        // fall back to opening a pre-filled email so a lead is never silently dropped.
+        (function(){{
+          var f = document.getElementById('lead-form'), key = {json.dumps(FORM_KEY)};
+          var thanks = '<div class="callout"><strong>Thanks — we\\'ll be in touch within one business day.</strong></div>';
+          if (location.search.indexOf('sent=1') > -1) {{ f.innerHTML = thanks; return; }}
+          f.addEventListener('submit', function(e){{
+            e.preventDefault();
+            var btn = f.querySelector('button[type=submit]'), err = f.querySelector('.form-error');
+            var v = function(n){{ return f.elements[n].value; }};
+            if (!key) {{
+              var body = 'Name: ' + v('name') + '\\nEmail: ' + v('email') + '\\nCompany: ' + v('company') +
+                         '\\nInterested in: ' + v('service') + '\\n\\n' + v('message');
+              location.href = 'mailto:{b.EMAIL}?subject=' + encodeURIComponent('New ClearLeads enquiry') +
+                              '&body=' + encodeURIComponent(body);
+              return;
+            }}
+            btn.disabled = true; err.hidden = true;
+            fetch('https://api.web3forms.com/submit', {{
+              method: 'POST', headers: {{'Accept': 'application/json'}}, body: new FormData(f)
+            }}).then(function(r){{ return r.json().then(function(d){{ if (!r.ok || !d.success) throw d; }}); }})
+              .then(function(){{ f.innerHTML = thanks; }})
+              .catch(function(){{ btn.disabled = false; err.hidden = false; }});
+          }});
+        }})();
+        </script>
       </div>
     </div>
   </div>
@@ -829,7 +871,7 @@ def build_blog_index():
           <div class="tag-row"><span class="tag">{tag}</span></div>
           <h3>{title}</h3><p>{excerpt}</p><span class="learn">Read article {A}</span></a>'''
     body = f'''
-<div class="container crumb"><a href="../index.html">Home</a> / Blog</div>
+<div class="container crumb"><a href="../">Home</a> / Blog</div>
 <section class="hero">
   <div class="container hero-inner" style="padding-top:48px">
     <div class="narrow">
@@ -876,7 +918,7 @@ def article(slug, seo_title, meta, h1, tag, read, dek, answer, sections_html, fa
       <div class="grid grid-2" style="max-width:820px;margin:0 auto">{rel_cards}</div></div></section>''' if rel else ""
     faq_html = faq_block(faqs) if faqs else ""
     body = f'''
-<div class="container crumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / {tag}</div>
+<div class="container crumb"><a href="../">Home</a> / <a href="./">Blog</a> / {h1}</div>
 <article>
 <section style="padding-bottom:24px">
   <div class="container article">
@@ -945,7 +987,7 @@ def build_articles():
          "<p>If your cost per qualified meeting is under about 10% of your average deal value, the economics work well. For a $15,000 average deal, anything under roughly $1,500 per meeting is healthy, and most programs come in far below that.</p>"),
     ]
     article("how-much-does-appointment-setting-cost",
-            "How Much Does Appointment Setting Cost in 2026? | ClearLeads",
+            "How Much Does Appointment Setting Cost in 2026?",
             "Appointment setting costs $2,000–$6,000/mo on retainer or $100–$400 per meeting. See pricing models, what drives cost, and how to calculate your cost per meeting.",
             "How much does appointment setting cost in 2026?",
             "Pricing", 6,
@@ -984,7 +1026,7 @@ def build_articles():
          "<p>Yes, and you should. Coordinated multi-channel sequences — an email plus a LinkedIn touch that reference each other — reliably outperform single-channel outreach.</p>"),
     ]
     article("cold-email-vs-linkedin-outreach",
-            "Cold Email vs LinkedIn Outreach: Which Books More Meetings? | ClearLeads",
+            "Cold Email vs LinkedIn: Which Books More Meetings?",
             "Cold email offers scale and lower cost per meeting; LinkedIn offers higher reply rates and trust. Compare both channels and learn why a combined sequence wins.",
             "Cold email vs LinkedIn outreach: which books more meetings?",
             "Strategy", 5,
@@ -1020,7 +1062,7 @@ def build_articles():
          "<p>No. Always use dedicated, separately-registered lookalike domains so that any reputation impact never touches your primary domain and its normal business email.</p>"),
     ]
     article("cold-email-deliverability",
-            "Cold Email Deliverability: How to Land in the Inbox | ClearLeads",
+            "Cold Email Deliverability: How to Land in the Inbox",
             "Cold email deliverability comes down to warmed dedicated domains, SPF/DKIM/DMARC, low per-inbox volume, and verified lists. Here's the exact setup that avoids spam.",
             "Cold email deliverability: how we land in the inbox",
             "Deliverability", 6,
@@ -1082,8 +1124,8 @@ def build_articles_buyer():
          "<p>Yes. The agency books qualified meetings directly onto your reps' calendars and syncs activity to your CRM, so your account executives simply take the calls and close.</p>"),
     ]
     article("outsourced-sdr-vs-in-house",
-            "Outsourced SDR vs In-House SDR: Cost & Results Compared | ClearLeads",
-            "An in-house SDR costs $90k–$160k/year fully loaded and takes ~3 months to ramp; an outsourced SDR agency costs $24k–$72k/year and books meetings in weeks. Full comparison.",
+            "Outsourced SDR vs In-House SDR: Cost Compared (2026)",
+            "In-house SDRs cost $90k–$160k/year fully loaded and take ~3 months to ramp; an outsourced SDR agency costs $24k–$72k/year and books meetings in weeks.",
             "Outsourced SDR vs in-house SDR: cost, ramp time, and results",
             "Strategy", 7,
             "What a sales development rep really costs, how fast each option produces meetings, and which fits your stage.",
@@ -1134,7 +1176,7 @@ def build_articles_buyer():
          "<p>A typical healthy structure is a short initial ramp of one to three months followed by month-to-month. Long lock-ins remove the agency's incentive to keep performing.</p>"),
     ]
     article("how-to-choose-a-lead-generation-agency",
-            "How to Choose a B2B Lead Generation Agency: 12 Questions | ClearLeads",
+            "How to Choose a B2B Lead Generation Agency: 12 Questions",
             "Vetting a B2B lead generation or appointment-setting agency? Ask these 12 questions about qualified meetings, deliverability, reply handling, reporting, and contracts.",
             "How to choose a B2B lead generation agency: 12 questions to ask",
             "Buying guide", 7,
@@ -1192,8 +1234,8 @@ def build_articles_buyer():
          "<p>Most B2B appointment-setting agencies charge $2,000–$6,000 per month on retainer, or $100–$400 per qualified meeting on a pay-per-meeting model.</p>"),
     ]
     article("what-is-appointment-setting",
-            "What Is B2B Appointment Setting? Complete Guide (2026) | ClearLeads",
-            "B2B appointment setting means finding ICP decision-makers, reaching them by email and LinkedIn, qualifying interest, and booking sales meetings. How it works, costs, and who it's for.",
+            "What Is B2B Appointment Setting? Complete Guide (2026)",
+            "B2B appointment setting: finding decision-makers, reaching them by email and LinkedIn, qualifying interest, and booking meetings. Process, cost, fit.",
             "What is B2B appointment setting? A complete guide",
             "Fundamentals", 6,
             "The process, the people, the price — and how it differs from plain lead generation.",
@@ -1236,7 +1278,7 @@ def build_articles_buyer():
          "<p>As a rough guide, around 100 well-targeted emails per meeting is achievable: 1,000 emails at a 2% positive reply rate with half of those booking produces about 10 meetings.</p>"),
     ]
     article("cold-email-reply-rate-benchmarks",
-            "Good Cold Email Reply Rate? 2026 B2B Benchmarks | ClearLeads",
+            "Good Cold Email Reply Rate? 2026 B2B Benchmarks",
             "A good B2B cold email reply rate is 5%+ total and 2%+ positive. See 2026 benchmarks for bounce, reply, and meeting rates — and the five levers that improve them.",
             "What is a good cold email reply rate? 2026 benchmarks",
             "Benchmarks", 5,
@@ -1295,7 +1337,7 @@ Key facts:
 - Pricing: managed appointment-setting programs typically run $2,000–$6,000 per month on retainer; lead lists and one-time outbound system builds are quoted separately.
 - Time to launch: about 14 days (inbox warm-up is the main dependency); first meetings usually within 2–4 weeks.
 - Contracts: no long lock-in; month-to-month after ramp.
-- Regions served: North America, Europe, UK, Australia, and Asia (outreach runs in prospects' time zones).
+- Regions served: worldwide — mainly North America, the UK, Europe, and Australia (outreach runs in prospects' time zones).
 - Contact: {b.EMAIL} · Book a strategy call: {SITE}/{BOOK}
 
 ## Services
@@ -1357,7 +1399,7 @@ def build_404():
     <div class="links">
       <a href="/services.html">Services</a>·
       <a href="/results.html">Results</a>·
-      <a href="/blog/index.html">Blog</a>·
+      <a href="/blog/">Blog</a>·
       <a href="/contact.html">Book a call</a>
     </div>
   </div>
