@@ -87,7 +87,7 @@
         <h2>Prefer to send a note?</h2>
         <p class="lede" style="font-size:1.05rem">Tell us a little about your goals and we'll reply within one business day.</p>
         <form class="lead mt-2" id="lead-form" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="">
+          <input type="hidden" name="access_key" value="39812cf9-94d8-4fe9-9ff4-a69d749381f9">
           <input type="hidden" name="subject" value="New ClearLeads enquiry">
           <input type="hidden" name="from_name" value="clearleads.co contact form">
           <input type="hidden" name="redirect" value="https://clearleads.co/contact.html?sent=1">
@@ -113,7 +113,7 @@
         // Web3Forms emails each enquiry to dinesh@clearleads.co. With no access key configured,
         // fall back to opening a pre-filled email so a lead is never silently dropped.
         (function(){
-          var f = document.getElementById('lead-form'), key = "";
+          var f = document.getElementById('lead-form'), key = "39812cf9-94d8-4fe9-9ff4-a69d749381f9";
           var thanks = '<div class="callout"><strong>Thanks — we\'ll be in touch within one business day.</strong></div>';
           if (location.search.indexOf('sent=1') > -1) { f.innerHTML = thanks; return; }
           f.addEventListener('submit', function(e){
