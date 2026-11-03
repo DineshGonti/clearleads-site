@@ -151,20 +151,51 @@ def strip_tags(s):
     import re
     return re.sub(r"<[^>]+>","",s).strip()
 
+EMAIL = "hello@clearleads.co"
+OG_IMAGE = f"{SITE}/assets/og-image.png"
+# Add real profile URLs here once they exist (LinkedIn, Clutch, G2…) — they feed
+# Organization.sameAs, which search engines and LLMs use to confirm the entity.
+SAME_AS = []
+
 ORG_SCHEMA = {
-    "@context":"https://schema.org","@type":"Organization","name":NAME,"url":SITE,
-    "logo":f"{SITE}/assets/logo.png","email":"hello@clearleads.co",
-    "description":"B2B lead generation and appointment setting agency. We book qualified sales meetings for B2B teams via cold email and LinkedIn outreach.",
-    "sameAs":["https://www.linkedin.com/company/clearleads","https://clutch.co/profile/clearleads","https://www.g2.com/products/clearleads"]
+    "@context":"https://schema.org","@type":"ProfessionalService","@id":f"{SITE}/#org",
+    "name":NAME,"url":f"{SITE}/","logo":f"{SITE}/assets/logo.png","image":OG_IMAGE,
+    "email":EMAIL,"slogan":"Qualified B2B sales meetings, booked on your calendar.",
+    "description":"ClearLeads is a B2B lead generation and appointment setting agency. We book qualified sales meetings for B2B companies through done-for-you cold email and LinkedIn outreach, verified lead lists, and database reactivation.",
+    "areaServed":["United States","United Kingdom","Canada","Australia","Europe","India"],
+    "priceRange":"$$",
+    "knowsAbout":["B2B lead generation","Appointment setting","Outsourced SDR","Cold email outreach",
+                  "Email deliverability","LinkedIn outreach","Sales prospecting","Lead list building",
+                  "Database reactivation","Outbound sales"],
+    "contactPoint":{"@type":"ContactPoint","contactType":"sales","email":EMAIL,
+                    "url":f"{SITE}/{BOOK}","availableLanguage":"English"},
+    **({"sameAs":SAME_AS} if SAME_AS else {}),
+}
+WEBSITE_SCHEMA = {
+    "@context":"https://schema.org","@type":"WebSite","@id":f"{SITE}/#website",
+    "url":f"{SITE}/","name":NAME,"inLanguage":"en","publisher":{"@id":f"{SITE}/#org"},
 }
 
-def page(slug, title, desc, body, schemas=None, active="", prefix="", canonical=None):
+def breadcrumb_schema(crumbs):
+    """crumbs: [(name, path), ...] after Home; path relative to site root."""
+    items = [("Home", "")] + list(crumbs)
+    return {"@context":"https://schema.org","@type":"BreadcrumbList",
+            "itemListElement":[{"@type":"ListItem","position":i,"name":n,"item":f"{SITE}/{p}"}
+                               for i,(n,p) in enumerate(items,1)]}
+
+def page(slug, title, desc, body, schemas=None, active="", prefix="", canonical=None,
+         crumbs=None, og_type="website", published=None, modified=None):
     schemas = schemas or []
-    schemas = [ORG_SCHEMA] + schemas
+    schemas = [ORG_SCHEMA] + ([WEBSITE_SCHEMA] if slug == "index.html" else []) \
+              + ([breadcrumb_schema(crumbs)] if crumbs else []) + schemas
     schema_html = "\n".join(
         f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in schemas
     )
     canon = canonical or f"{SITE}/{slug}"
+    art_meta = ""
+    if og_type == "article":
+        art_meta = (f'\n<meta property="article:published_time" content="{published}">'
+                    f'\n<meta property="article:modified_time" content="{modified}">')
     doc = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,18 +203,30 @@ def page(slug, title, desc, body, schemas=None, active="", prefix="", canonical=
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="theme-color" content="#0A1B3D">
 <link rel="canonical" href="{canon}">
-<meta property="og:type" content="website">
+<link rel="alternate" type="text/plain" title="LLM summary" href="{SITE}/llms.txt">
+<meta property="og:type" content="{og_type}">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canon}">
 <meta property="og:site_name" content="{NAME}">
+<meta property="og:image" content="{OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ClearLeads — qualified B2B sales meetings, booked on your calendar">{art_meta}
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{OG_IMAGE}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{prefix}css/styles.css?v={CSS_VER}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563EB'/%3E%3Cpath d='M9 16.5l4 4 10-10' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 {schema_html}
 </head>
 <body>

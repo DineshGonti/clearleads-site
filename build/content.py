@@ -229,7 +229,7 @@ def build_services():
         ("Can I buy just one service, like lead lists?",
          "<p>Yes. Lead list building and data is a popular standalone entry point. You can also add cold email, LinkedIn, or database reactivation individually, or combine them into a full outbound system.</p>"),
         ("Do you replace or complement our in-house SDRs?",
-         "<p>Either. Many clients use us as their entire outbound engine; others use us to add capacity, test new segments, or cover channels their SDRs don't run. We integrate with your CRM and calendar either way.</p>"),
+         "<p>Either. Many clients use us as their entire outbound engine; others use us to add capacity, test new segments, or cover channels their SDRs don't run. We integrate with your CRM and calendar either way. See <a href='blog/outsourced-sdr-vs-in-house.html'>Outsourced SDR vs in-house SDR</a> for a cost comparison.</p>"),
     ]
     body = f'''
 <div class="container crumb"><a href="index.html">Home</a> / Services</div>
@@ -260,7 +260,7 @@ def build_services():
     page("services.html",
          "B2B Lead Generation & SDR Services | ClearLeads",
          "Outsourced SDR and lead generation services: appointment setting, cold email, LinkedIn outreach, lead lists, and database reactivation. Book qualified B2B meetings.",
-         body, schemas=[faq_schema(faqs)])
+         body, schemas=[faq_schema(faqs)], crumbs=[("Services", "services.html")])
 
 # ------------------------------------------------------------------
 # SERVICE PAGE TEMPLATE
@@ -274,9 +274,9 @@ def service_page(slug, title, h1, seo_title, meta, answer, included, metrics, wh
     service_schema = {
         "@context": "https://schema.org", "@type": "Service",
         "serviceType": title, "name": f"{title} — {NAME}",
-        "provider": {"@type": "Organization", "name": NAME, "url": SITE},
-        "areaServed": "Global", "description": b.strip_tags(answer),
-        "url": f"{SITE}/{slug}",
+        "provider": {"@id": f"{SITE}/#org"},
+        "areaServed": "Worldwide", "audience": {"@type": "BusinessAudience", "audienceType": "B2B companies"},
+        "description": b.strip_tags(answer), "url": f"{SITE}/{slug}.html",
     }
     price_html = ""
     if price:
@@ -336,7 +336,8 @@ def service_page(slug, title, h1, seo_title, meta, answer, included, metrics, wh
 {cta_band()}
 '''
     page(f"{slug}.html", seo_title, meta, body,
-         schemas=[service_schema, faq_schema(faqs)])
+         schemas=[service_schema, faq_schema(faqs)],
+         crumbs=[("Services", "services.html"), (title, f"{slug}.html")])
 
 # ---- individual service content ----
 def build_services_detail():
@@ -368,6 +369,8 @@ def build_services_detail():
           "<p>We track show-ups and follow up to reschedule. No-shows caused by factors within our control are replaced at no extra cost, so you only pay for meetings that count.</p>"),
          ("Do the meetings appear on our own calendar?",
           "<p>Yes. We book directly into your calendar (Calendly, Google, or Outlook) with full context notes on the prospect and the conversation, so your rep walks in prepared.</p>"),
+         ("Is it better to outsource appointment setting or hire SDRs?",
+          "<p>Outsourcing is usually faster and cheaper: a fully-loaded in-house SDR often costs $90k–$160k a year and takes about three months to ramp, while an agency is typically live in two to four weeks for a fraction of the cost. Read the full breakdown in <a href='blog/outsourced-sdr-vs-in-house.html'>Outsourced SDR vs in-house SDR</a>.</p>"),
          ("Can you integrate with our CRM?",
           "<p>We sync activity and booked meetings to HubSpot, Salesforce, Pipedrive, and most major CRMs so your pipeline stays clean and attributable.</p>")],
         price="a monthly retainer, typically $2k–$6k depending on volume and channels.")
@@ -399,7 +402,7 @@ def build_services_detail():
          ("Will you use my domain?",
           "<p>No — we register and warm dedicated lookalike domains so your primary domain's reputation is never put at risk. All replies still route to you and appear under your brand.</p>"),
          ("How many meetings can cold email book?",
-          "<p>It varies by market and offer, but a well-run campaign sending ~3,000 quality emails a month typically produces 10–25 qualified conversations. We'll forecast realistically for your niche on the call.</p>"),
+          "<p>It varies by market and offer, but a well-run campaign sending ~3,000 quality emails a month typically produces 10–25 qualified conversations. We'll forecast realistically for your niche on the call. See <a href='blog/cold-email-reply-rate-benchmarks.html'>cold email reply rate benchmarks</a>.</p>"),
          ("Cold email or LinkedIn — which is better?",
           "<p>They work best together. Email gives reach and volume; LinkedIn adds trust and a second touch. See <a href='blog/cold-email-vs-linkedin-outreach.html'>Cold email vs LinkedIn outreach</a> for a full comparison.</p>")],
         price="a monthly retainer that includes all sending infrastructure and inbox warm-up.")
@@ -588,7 +591,7 @@ def build_how():
     page("how-it-works.html",
          "How It Works | ClearLeads Appointment Setting Process",
          "See how ClearLeads books qualified B2B meetings: discovery and ICP, infrastructure build, multi-channel launch, and weekly optimisation. Live in about 14 days.",
-         body, schemas=[faq_schema(faqs)])
+         body, schemas=[faq_schema(faqs)], crumbs=[("How It Works", "how-it-works.html")])
 
 # ------------------------------------------------------------------
 # RESULTS
@@ -652,7 +655,7 @@ def build_results():
     page("results.html",
          "Results & Case Studies | ClearLeads B2B Lead Generation",
          "ClearLeads case studies: qualified meetings booked, reply-rate lifts, and lower cost per meeting for B2B SaaS, consulting, and fintech teams. See the numbers.",
-         body)
+         body, crumbs=[("Results", "results.html")])
 
 # ------------------------------------------------------------------
 # ABOUT
@@ -706,7 +709,7 @@ def build_about():
     page("about.html",
          "About ClearLeads | B2B Lead Generation Agency",
          "ClearLeads is a B2B lead generation and appointment-setting agency built on verified data, strong messaging, and honest weekly reporting. Meet the team behind your pipeline.",
-         body, schemas=[faq_schema(faqs)])
+         body, schemas=[faq_schema(faqs)], crumbs=[("About", "about.html")])
 
 # ------------------------------------------------------------------
 # CONTACT / BOOK
@@ -784,23 +787,44 @@ def build_contact():
     page("contact.html",
          "Book a Call | ClearLeads B2B Lead Generation",
          "Book a free 30-minute strategy call with ClearLeads. We'll map your ICP, forecast qualified meetings, and give you a fixed quote — no pressure, no long contracts.",
-         body, schemas=[faq_schema(faqs)])
+         body, schemas=[faq_schema(faqs)], crumbs=[("Book a call", "contact.html")])
 
 # ------------------------------------------------------------------
 # BLOG INDEX + ARTICLES
 # ------------------------------------------------------------------
+# (slug, title, excerpt, tag, published, modified) — newest first on the blog index
 ARTICLES = [
+    ("outsourced-sdr-vs-in-house", "Outsourced SDR vs in-house SDR: cost, ramp time, and results",
+     "The fully-loaded cost of an in-house SDR versus an outsourced SDR agency, side by side — and how to decide.", "Strategy",
+     "2026-11-03", "2026-11-03"),
+    ("how-to-choose-a-lead-generation-agency", "How to choose a B2B lead generation agency: 12 questions to ask",
+     "A buyer's checklist for vetting lead generation and appointment-setting agencies before you sign.", "Buying guide",
+     "2026-11-03", "2026-11-03"),
+    ("what-is-appointment-setting", "What is B2B appointment setting? A complete guide",
+     "What appointment setters do, how the process works, what it costs, and when it beats hiring SDRs.", "Fundamentals",
+     "2026-11-03", "2026-11-03"),
+    ("cold-email-reply-rate-benchmarks", "What is a good cold email reply rate? 2026 benchmarks",
+     "Realistic B2B cold email open, reply, and meeting rates — and the levers that move each one.", "Benchmarks",
+     "2026-11-03", "2026-11-03"),
     ("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?",
-     "A clear breakdown of appointment-setting pricing models, real price ranges, and how to work out your cost per meeting.", "Pricing"),
+     "A clear breakdown of appointment-setting pricing models, real price ranges, and how to work out your cost per meeting.", "Pricing",
+     "2026-01-15", "2026-11-03"),
     ("cold-email-vs-linkedin-outreach", "Cold email vs LinkedIn outreach: which books more meetings?",
-     "How the two biggest outbound channels compare on reach, reply rates, cost, and when to use each — or both.", "Strategy"),
+     "How the two biggest outbound channels compare on reach, reply rates, cost, and when to use each — or both.", "Strategy",
+     "2026-01-15", "2026-11-03"),
     ("cold-email-deliverability", "Cold email deliverability: how we land in the inbox",
-     "The exact setup — domains, warm-up, authentication, and sending discipline — that keeps cold email out of spam.", "Deliverability"),
+     "The exact setup — domains, warm-up, authentication, and sending discipline — that keeps cold email out of spam.", "Deliverability",
+     "2026-01-15", "2026-11-03"),
 ]
+ARTICLE_DATES = {a[0]: (a[4], a[5]) for a in ARTICLES}
+
+def human_date(iso):
+    import datetime
+    return datetime.date.fromisoformat(iso).strftime("%B %Y")
 
 def build_blog_index():
     cards = ""
-    for slug, title, excerpt, tag in ARTICLES:
+    for slug, title, excerpt, tag, *_ in ARTICLES:
         cards += f'''<a class="card" href="{slug}.html" style="text-decoration:none">
           <div class="tag-row"><span class="tag">{tag}</span></div>
           <h3>{title}</h3><p>{excerpt}</p><span class="learn">Read article {A}</span></a>'''
@@ -820,19 +844,28 @@ def build_blog_index():
 </section>
 {cta_band(prefix="../")}
 '''
+    blog_schema = {
+        "@context": "https://schema.org", "@type": "Blog", "name": f"{NAME} Blog",
+        "url": f"{SITE}/blog/", "publisher": {"@id": f"{SITE}/#org"},
+        "blogPost": [{"@type": "BlogPosting", "headline": t, "url": f"{SITE}/blog/{s}.html",
+                      "datePublished": pub, "dateModified": mod}
+                     for s, t, _, _, pub, mod in ARTICLES],
+    }
     page("blog/index.html",
          "Blog | B2B Lead Generation & Outbound Guides | ClearLeads",
          "Practical guides on appointment setting, cold email, LinkedIn outreach, and B2B pipeline. Learn how outbound really works from the ClearLeads team.",
-         body, prefix="../", canonical=f"{SITE}/blog/")
+         body, schemas=[blog_schema], prefix="../", canonical=f"{SITE}/blog/",
+         crumbs=[("Blog", "blog/")])
 
 def article(slug, seo_title, meta, h1, tag, read, dek, answer, sections_html, faqs, related=None):
+    published, modified = ARTICLE_DATES[slug]
     art_schema = {
-        "@context": "https://schema.org", "@type": "Article",
-        "headline": h1, "description": meta,
-        "author": {"@type": "Organization", "name": NAME},
-        "publisher": {"@type": "Organization", "name": NAME, "url": SITE},
-        "mainEntityOfPage": f"{SITE}/blog/{slug}", "datePublished": "2026-01-15",
-        "dateModified": "2026-06-01",
+        "@context": "https://schema.org", "@type": "BlogPosting",
+        "headline": h1, "description": meta, "image": b.OG_IMAGE,
+        "author": {"@type": "Organization", "name": f"{NAME} team", "url": f"{SITE}/about.html"},
+        "publisher": {"@id": f"{SITE}/#org"},
+        "mainEntityOfPage": f"{SITE}/blog/{slug}.html", "datePublished": published,
+        "dateModified": modified, "articleSection": tag, "inLanguage": "en",
     }
     rel = related or []
     rel_cards = ""
@@ -849,7 +882,7 @@ def article(slug, seo_title, meta, h1, tag, read, dek, answer, sections_html, fa
   <div class="container article">
     <div class="tag-row"><span class="tag">{tag}</span></div>
     <h1>{h1}</h1>
-    <p class="meta">By the ClearLeads team · Updated June 2026 · {read} min read</p>
+    <p class="meta">By the ClearLeads team · Updated <time datetime="{modified}">{human_date(modified)}</time> · {read} min read</p>
     <p class="lede">{dek}</p>
   </div>
 </section>
@@ -870,7 +903,8 @@ def article(slug, seo_title, meta, h1, tag, read, dek, answer, sections_html, fa
 '''
     page(f"blog/{slug}.html", seo_title, meta, body,
          schemas=[art_schema] + ([faq_schema(faqs)] if faqs else []),
-         prefix="../")
+         prefix="../", crumbs=[("Blog", "blog/"), (h1, f"blog/{slug}.html")],
+         og_type="article", published=published, modified=modified)
 
 def build_articles():
     # 1) Appointment setting cost
@@ -996,28 +1030,286 @@ def build_articles():
             related=[("cold-email-vs-linkedin-outreach", "Cold email vs LinkedIn outreach: which books more meetings?"),
                      ("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?")])
 
+def build_articles_buyer():
+    """Bottom-of-funnel guides: people searching these are close to hiring."""
+    # 4) Outsourced vs in-house SDR
+    sections = '''
+<h2>The true cost of an in-house SDR</h2>
+<p>An SDR's salary is only the visible part. Once you add commission, benefits, tools, management time, and the months before they're productive, a single US-based SDR typically costs well into six figures a year.</p>
+<table>
+<tr><th>Cost line (US, per year)</th><th>Typical range</th></tr>
+<tr><td>Base salary</td><td>$50,000–$70,000</td></tr>
+<tr><td>Commission / variable pay</td><td>$15,000–$30,000</td></tr>
+<tr><td>Benefits, payroll tax, equipment (~20–30%)</td><td>$12,000–$25,000</td></tr>
+<tr><td>Tools: data, sequencer, Sales Navigator, dialer</td><td>$6,000–$15,000</td></tr>
+<tr><td>Recruiting and management time</td><td>$8,000–$20,000</td></tr>
+<tr><td><strong>Fully-loaded total</strong></td><td><strong>$90,000–$160,000</strong></td></tr>
+</table>
+<p>Then factor in <strong>ramp time</strong> — usually around three months before a new SDR books at full pace — and <strong>turnover</strong>: SDR tenure is often under two years, so you pay the hiring and ramp cost again.</p>
+<h2>The cost of an outsourced SDR agency</h2>
+<p>An outsourced SDR or appointment-setting agency usually charges a monthly retainer of roughly <strong>$2,000–$6,000</strong> ($24,000–$72,000 a year), sometimes with a per-meeting component. That fee normally includes the people, the sending infrastructure, the data, and the tooling.</p>
+<h2>Side-by-side comparison</h2>
+<table>
+<tr><th>Factor</th><th>In-house SDR</th><th>Outsourced SDR agency</th></tr>
+<tr><td>Annual cost</td><td>$90k–$160k per rep</td><td>$24k–$72k</td></tr>
+<tr><td>Time to first meetings</td><td>2–4 months (hire + ramp)</td><td>2–4 weeks</td></tr>
+<tr><td>Tools & data</td><td>You buy and manage</td><td>Included</td></tr>
+<tr><td>Deliverability expertise</td><td>Must be learned</td><td>Built in</td></tr>
+<tr><td>Control & product knowledge</td><td>Highest</td><td>High, with good onboarding</td></tr>
+<tr><td>Risk if it doesn't work</td><td>Severance, sunk ramp</td><td>Cancel month-to-month</td></tr>
+</table>
+<h2>When in-house makes more sense</h2>
+<ul>
+<li>You have a very technical or regulated product that needs deep, daily product knowledge.</li>
+<li>You already have a proven outbound playbook and a manager who can coach SDRs.</li>
+<li>You want to build a long-term sales career path from SDR to AE.</li>
+</ul>
+<h2>When outsourcing makes more sense</h2>
+<ul>
+<li>You need pipeline in weeks, not quarters.</li>
+<li>You haven't yet proven which segments and messages work in outbound.</li>
+<li>You don't want to own domains, inbox warm-up, data, and tooling.</li>
+<li>Your founders or AEs are still doing their own prospecting.</li>
+</ul>
+<div class="callout"><strong style="color:var(--ink)">A common path:</strong> outsource first to prove the channel and the messaging, then hire in-house SDRs onto a system that already works — or keep the agency and let your AEs focus purely on closing.</div>
+'''
+    faqs = [
+        ("Is an outsourced SDR cheaper than hiring one?",
+         "<p>Usually, yes. A fully-loaded US in-house SDR typically costs $90,000–$160,000 a year once salary, commission, benefits, tools, and management are included. An outsourced SDR agency usually costs $24,000–$72,000 a year and includes infrastructure, data, and tooling.</p>"),
+        ("How long does an in-house SDR take to ramp?",
+         "<p>Most new SDRs take around three months to reach full productivity, on top of the four to eight weeks it often takes to recruit them. An outsourced team is typically live within two to four weeks.</p>"),
+        ("Can an outsourced SDR team work alongside my sales reps?",
+         "<p>Yes. The agency books qualified meetings directly onto your reps' calendars and syncs activity to your CRM, so your account executives simply take the calls and close.</p>"),
+    ]
+    article("outsourced-sdr-vs-in-house",
+            "Outsourced SDR vs In-House SDR: Cost & Results Compared | ClearLeads",
+            "An in-house SDR costs $90k–$160k/year fully loaded and takes ~3 months to ramp; an outsourced SDR agency costs $24k–$72k/year and books meetings in weeks. Full comparison.",
+            "Outsourced SDR vs in-house SDR: cost, ramp time, and results",
+            "Strategy", 7,
+            "What a sales development rep really costs, how fast each option produces meetings, and which fits your stage.",
+            "<strong>An outsourced SDR agency is usually cheaper and faster than hiring in-house.</strong> A fully-loaded US in-house SDR typically costs $90,000–$160,000 a year and takes around three months to ramp, while an outsourced SDR service typically costs $24,000–$72,000 a year, includes tools and data, and books first meetings within two to four weeks. In-house wins on deep product knowledge and long-term control.",
+            sections, faqs,
+            related=[("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?"),
+                     ("how-to-choose-a-lead-generation-agency", "How to choose a B2B lead generation agency: 12 questions to ask")])
+
+    # 5) How to choose an agency
+    sections = '''
+<h2>Questions about results</h2>
+<ol>
+<li><strong>How do you define a qualified meeting?</strong> Get it in writing: title, company size, geography, and intent. Vague definitions are how agencies hit targets that don't turn into pipeline.</li>
+<li><strong>What happens with no-shows?</strong> Good agencies replace meetings that don't happen for reasons within their control.</li>
+<li><strong>Can I speak to a current client in my space?</strong> A reference call beats any case study PDF.</li>
+<li><strong>What forecast would you give me — and why?</strong> A credible agency gives a range and explains its assumptions. Be wary of anyone who guarantees a precise number before seeing your offer.</li>
+</ol>
+<h2>Questions about how they work</h2>
+<ol start="5">
+<li><strong>Whose domains do you send from?</strong> The right answer is dedicated lookalike domains — never your primary domain.</li>
+<li><strong>How do you protect deliverability?</strong> Listen for inbox warm-up, SPF/DKIM/DMARC, low volume per inbox, and verified lists. See our <a href="cold-email-deliverability.html">deliverability guide</a> for what good looks like.</li>
+<li><strong>Who writes the copy, and do I approve it?</strong> You should approve messaging before anything is sent under your brand.</li>
+<li><strong>Who handles replies?</strong> Real people qualifying and scheduling convert far more replies into meetings than auto-responders.</li>
+<li><strong>Which channels do you run?</strong> Email plus LinkedIn usually outperforms either one alone.</li>
+</ol>
+<h2>Questions about the commercial terms</h2>
+<ol start="10">
+<li><strong>What's the contract length?</strong> A short ramp followed by month-to-month keeps the agency accountable.</li>
+<li><strong>What's included in the fee?</strong> Check whether domains, inboxes, data, and tools are included or billed on top.</li>
+<li><strong>What do I own if we stop?</strong> Ask about the lead lists, the copy, and the domains when the engagement ends.</li>
+</ol>
+<h2>Red flags</h2>
+<ul>
+<li>Guaranteed meeting numbers before they understand your offer.</li>
+<li>Reporting on opens and "leads" instead of qualified meetings.</li>
+<li>Sending from your main domain.</li>
+<li>Twelve-month lock-ins with no performance exit.</li>
+<li>No access to the raw activity — sends, replies, and meetings.</li>
+</ul>
+<div class="callout"><strong style="color:var(--ink)">Shortcut:</strong> the best agencies are measured on qualified meetings booked, report weekly on real numbers, and let you leave if they don't deliver.</div>
+'''
+    faqs = [
+        ("What should I look for in a lead generation agency?",
+         "<p>Look for a written definition of a qualified meeting, dedicated sending domains and proven deliverability practice, human reply handling, multi-channel outreach, transparent weekly reporting, and short or month-to-month contracts.</p>"),
+        ("Should a lead generation agency guarantee results?",
+         "<p>Be cautious of precise guarantees made before the agency understands your offer and market. A credible agency gives a realistic forecast range, explains its assumptions, and replaces no-show or unqualified meetings.</p>"),
+        ("How long should a lead generation contract be?",
+         "<p>A typical healthy structure is a short initial ramp of one to three months followed by month-to-month. Long lock-ins remove the agency's incentive to keep performing.</p>"),
+    ]
+    article("how-to-choose-a-lead-generation-agency",
+            "How to Choose a B2B Lead Generation Agency: 12 Questions | ClearLeads",
+            "Vetting a B2B lead generation or appointment-setting agency? Ask these 12 questions about qualified meetings, deliverability, reply handling, reporting, and contracts.",
+            "How to choose a B2B lead generation agency: 12 questions to ask",
+            "Buying guide", 7,
+            "A practical checklist for comparing agencies — and the red flags that should end the conversation.",
+            "<strong>To choose a B2B lead generation agency, judge it on how it defines and delivers qualified meetings.</strong> Ask how a qualified meeting is defined, whose domains they send from, how they protect deliverability, who handles replies, how they report, and what the contract terms are. The best agencies report weekly on meetings booked and work month-to-month after a short ramp.",
+            sections, faqs,
+            related=[("outsourced-sdr-vs-in-house", "Outsourced SDR vs in-house SDR: cost, ramp time, and results"),
+                     ("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?")])
+
+    # 6) What is appointment setting
+    sections = '''
+<h2>What an appointment setter does</h2>
+<p>An appointment setter sits at the top of the sales funnel. Their job ends when a qualified prospect has a meeting on a closer's calendar. Day to day that means:</p>
+<ul>
+<li>Building lists of decision-makers who match the ideal customer profile (ICP).</li>
+<li>Reaching out by cold email, LinkedIn, and sometimes phone.</li>
+<li>Handling replies, questions, and objections.</li>
+<li>Qualifying interest against agreed criteria.</li>
+<li>Booking the meeting and passing full context to the sales rep.</li>
+</ul>
+<h2>How the appointment-setting process works</h2>
+<ol>
+<li><strong>Define the ICP and offer.</strong> Who is the buyer, what problem do you solve, and what counts as qualified?</li>
+<li><strong>Build the list.</strong> Verified contacts at the right companies and seniority.</li>
+<li><strong>Set up infrastructure.</strong> Dedicated domains, warmed inboxes, and LinkedIn profiles.</li>
+<li><strong>Run outreach sequences.</strong> Several personalised touches across channels.</li>
+<li><strong>Qualify and book.</strong> Interested replies are qualified and scheduled onto your calendar.</li>
+<li><strong>Report and optimise.</strong> Track sends, replies, and meetings, and improve weekly.</li>
+</ol>
+<p>See exactly how we run it on our <a href="../how-it-works.html">How It Works</a> page.</p>
+<h2>Appointment setting vs lead generation</h2>
+<table>
+<tr><th></th><th>Lead generation</th><th>Appointment setting</th></tr>
+<tr><td>Output</td><td>Leads or contacts showing interest</td><td>Booked, qualified sales meetings</td></tr>
+<tr><td>Measured on</td><td>Volume of leads</td><td>Meetings held with qualified buyers</td></tr>
+<tr><td>Who does follow-up</td><td>Often your team</td><td>The appointment setter</td></tr>
+</table>
+<h2>In-house setters vs an appointment-setting agency</h2>
+<p>You can hire SDRs to set appointments, or outsource to an agency that brings the people, data, tooling, and deliverability know-how. Agencies are typically faster to launch and cheaper than a fully-loaded hire — we break the numbers down in <a href="outsourced-sdr-vs-in-house.html">Outsourced SDR vs in-house SDR</a>.</p>
+<h2>Who appointment setting is for</h2>
+<ul>
+<li>B2B companies with a proven offer and a team that can close.</li>
+<li>Deal sizes that justify the cost of a sales meeting (usually $5,000+ in lifetime value).</li>
+<li>A definable buyer — a clear title, industry, and company size.</li>
+</ul>
+'''
+    faqs = [
+        ("What is B2B appointment setting?",
+         "<p>B2B appointment setting is the process of finding decision-makers who match your ideal customer profile, contacting them through cold email, LinkedIn, or phone, qualifying their interest, and booking them into sales meetings with your team.</p>"),
+        ("What does an appointment setter do?",
+         "<p>An appointment setter builds prospect lists, runs outreach, handles replies and objections, qualifies prospects against agreed criteria, and books meetings directly onto a sales rep's calendar with context notes.</p>"),
+        ("Is appointment setting the same as telemarketing?",
+         "<p>No. Modern B2B appointment setting is mostly multi-channel — cold email and LinkedIn first, phone sometimes — and is measured on qualified meetings rather than call volume.</p>"),
+        ("How much does appointment setting cost?",
+         "<p>Most B2B appointment-setting agencies charge $2,000–$6,000 per month on retainer, or $100–$400 per qualified meeting on a pay-per-meeting model.</p>"),
+    ]
+    article("what-is-appointment-setting",
+            "What Is B2B Appointment Setting? Complete Guide (2026) | ClearLeads",
+            "B2B appointment setting means finding ICP decision-makers, reaching them by email and LinkedIn, qualifying interest, and booking sales meetings. How it works, costs, and who it's for.",
+            "What is B2B appointment setting? A complete guide",
+            "Fundamentals", 6,
+            "The process, the people, the price — and how it differs from plain lead generation.",
+            "<strong>B2B appointment setting is the process of booking qualified sales meetings with decision-makers on your behalf.</strong> An appointment setter builds a targeted prospect list, contacts buyers through cold email, LinkedIn, or phone, handles replies, qualifies interest against agreed criteria, and schedules the meeting on your calendar — so your sales team spends its time closing instead of prospecting.",
+            sections, faqs,
+            related=[("how-much-does-appointment-setting-cost", "How much does appointment setting cost in 2026?"),
+                     ("outsourced-sdr-vs-in-house", "Outsourced SDR vs in-house SDR: cost, ramp time, and results")])
+
+    # 7) Reply-rate benchmarks
+    sections = '''
+<h2>B2B cold email benchmarks at a glance</h2>
+<table>
+<tr><th>Metric</th><th>Weak</th><th>Average</th><th>Strong</th></tr>
+<tr><td>Bounce rate</td><td>&gt;5%</td><td>2–5%</td><td>&lt;2%</td></tr>
+<tr><td>Total reply rate</td><td>&lt;2%</td><td>2–5%</td><td>5–10%+</td></tr>
+<tr><td>Positive reply rate</td><td>&lt;0.5%</td><td>0.5–2%</td><td>2–4%+</td></tr>
+<tr><td>Positive reply → meeting</td><td>&lt;30%</td><td>30–50%</td><td>50%+</td></tr>
+</table>
+<p>These are practical ranges for well-targeted B2B campaigns; your numbers will vary by industry, seniority, and offer. Treat open rates with caution — privacy features in modern mail apps make them unreliable, so replies and meetings are the metrics to manage.</p>
+<h2>Why reply rate beats open rate</h2>
+<p>Apple Mail Privacy Protection and image-blocking inflate or hide opens, so an "opened" email may never have been read. Replies and booked meetings can't be faked, which is why we report on those first.</p>
+<h2>The five levers that move reply rate</h2>
+<ol>
+<li><strong>Targeting.</strong> The single biggest lever. A tight ICP list beats clever copy sent to the wrong people.</li>
+<li><strong>Deliverability.</strong> If you're in spam, nothing else matters. See <a href="cold-email-deliverability.html">how we land in the inbox</a>.</li>
+<li><strong>Relevance.</strong> Reference a real trigger: a hire, a funding round, a tech change, a stated priority.</li>
+<li><strong>A low-friction ask.</strong> "Worth a look?" outperforms "Can we book 30 minutes Tuesday?" on a first touch.</li>
+<li><strong>Follow-ups.</strong> A large share of replies arrive on the second to fourth touch. Most campaigns stop too early.</li>
+</ol>
+<h2>From reply rate to meetings</h2>
+<p>A useful rule of thumb: 1,000 well-targeted emails at a 2% positive reply rate and a 50% booking rate produces about 10 meetings. Improve any of the three — list quality, positive reply rate, or how fast replies are handled — and meeting volume compounds.</p>
+<div class="callout"><strong style="color:var(--ink)">Fastest win:</strong> respond to positive replies within an hour. Speed to reply is one of the cheapest ways to lift the reply-to-meeting rate.</div>
+'''
+    faqs = [
+        ("What is a good cold email reply rate?",
+         "<p>For targeted B2B cold email, a total reply rate of 5% or more is strong, and 2–5% is average. A positive reply rate — people expressing interest — of 2% or higher is a strong result.</p>"),
+        ("What is a good cold email open rate?",
+         "<p>Open rates are no longer reliable because of mail privacy features that pre-load images. Focus on reply rate, positive reply rate, and meetings booked instead.</p>"),
+        ("How many cold emails does it take to book a meeting?",
+         "<p>As a rough guide, around 100 well-targeted emails per meeting is achievable: 1,000 emails at a 2% positive reply rate with half of those booking produces about 10 meetings.</p>"),
+    ]
+    article("cold-email-reply-rate-benchmarks",
+            "Good Cold Email Reply Rate? 2026 B2B Benchmarks | ClearLeads",
+            "A good B2B cold email reply rate is 5%+ total and 2%+ positive. See 2026 benchmarks for bounce, reply, and meeting rates — and the five levers that improve them.",
+            "What is a good cold email reply rate? 2026 benchmarks",
+            "Benchmarks", 5,
+            "Realistic numbers for B2B outbound, why open rates mislead, and how to turn replies into meetings.",
+            "<strong>A good B2B cold email reply rate is 5% or higher, with a positive reply rate of 2% or more.</strong> Average campaigns see 2–5% total replies. Open rates are unreliable because of mail privacy features, so track replies, positive replies, and meetings booked. Targeting, deliverability, relevance, a low-friction ask, and consistent follow-ups are the levers that move results.",
+            sections, faqs,
+            related=[("cold-email-deliverability", "Cold email deliverability: how we land in the inbox"),
+                     ("cold-email-vs-linkedin-outreach", "Cold email vs LinkedIn outreach: which books more meetings?")])
+
 # ------------------------------------------------------------------
-# sitemap + robots
+# sitemap + robots + llms.txt
 # ------------------------------------------------------------------
+LASTMOD = "2026-11-03"   # bump when page content changes
+
+# AI answer engines / LLM crawlers we explicitly welcome (AEO)
+AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+           "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot",
+           "CCBot", "Meta-ExternalAgent", "DuckAssistBot", "YouBot"]
+
 def build_meta_files():
-    urls = ["", "services.html", "how-it-works.html", "results.html", "about.html", "contact.html", "blog/"]
-    urls += [f"{s}.html" for s, *_ in SERVICES]
-    urls += [f"blog/{s}.html" for s, *_ in ARTICLES]
+    urls = [("", "1.0", "weekly"), ("services.html", "0.9", "monthly"), ("how-it-works.html", "0.8", "monthly"),
+            ("results.html", "0.8", "monthly"), ("about.html", "0.7", "monthly"),
+            ("contact.html", "0.9", "monthly"), ("blog/", "0.8", "weekly")]
+    urls += [(f"{s}.html", "0.9", "monthly") for s, *_ in SERVICES]
     items = ""
-    for u in urls:
-        loc = f"{SITE}/{u}" if u else f"{SITE}/"
-        pri = "1.0" if u == "" else ("0.9" if u.endswith(".html") and "blog/" not in u else "0.7")
-        items += f"  <url><loc>{loc}</loc><changefreq>monthly</changefreq><priority>{pri}</priority></url>\n"
+    for u, pri, freq in urls:
+        items += (f"  <url><loc>{SITE}/{u}</loc><lastmod>{LASTMOD}</lastmod>"
+                  f"<changefreq>{freq}</changefreq><priority>{pri}</priority></url>\n")
+    for s, *_, mod in ARTICLES:
+        items += (f"  <url><loc>{SITE}/blog/{s}.html</loc><lastmod>{mod}</lastmod>"
+                  f"<changefreq>monthly</changefreq><priority>0.7</priority></url>\n")
     sitemap = f'''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {items}</urlset>'''
     (b.OUT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
-    robots = f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n"
+    bots = "".join(f"User-agent: {bot}\nAllow: /\n\n" for bot in AI_BOTS)
+    robots = f"User-agent: *\nAllow: /\nDisallow: /build/\n\n{bots}Sitemap: {SITE}/sitemap.xml\n"
     (b.OUT / "robots.txt").write_text(robots, encoding="utf-8")
+    (b.OUT / "llms.txt").write_text(llms_txt(), encoding="utf-8")
     # CNAME — tells GitHub Pages which custom domain serves this site
     domain = SITE.replace("https://", "").replace("http://", "").rstrip("/")
     (b.OUT / "CNAME").write_text(domain + "\n", encoding="utf-8")
-    print(f"wrote sitemap.xml, robots.txt, CNAME ({domain})")
+    print(f"wrote sitemap.xml, robots.txt, llms.txt, CNAME ({domain})")
+
+def llms_txt():
+    """llms.txt (llmstxt.org): a plain-language map of the site for AI assistants."""
+    svc = "\n".join(f"- [{t}]({SITE}/{s}.html): {d}" for s, t, d, _ in SERVICES)
+    arts = "\n".join(f"- [{t}]({SITE}/blog/{s}.html): {e}" for s, t, e, *_ in ARTICLES)
+    return f"""# {NAME}
+
+> {NAME} ({SITE}) is a B2B lead generation and appointment setting agency. We book qualified sales meetings directly onto B2B companies' calendars using done-for-you cold email and LinkedIn outreach, verified lead lists, and database reactivation. Clients are typically live within about 14 days and work month-to-month after an initial ramp.
+
+Key facts:
+- What we do: outsourced SDR / appointment setting — prospect list building, multi-channel outreach (cold email + LinkedIn), human reply handling, qualification, and meeting booking with CRM sync and weekly reporting.
+- Who it's for: B2B SaaS, agencies, consultancies, professional services, recruiting, fintech, and other B2B companies with a defined ideal customer profile.
+- Pricing: managed appointment-setting programs typically run $2,000–$6,000 per month on retainer; lead lists and one-time outbound system builds are quoted separately.
+- Time to launch: about 14 days (inbox warm-up is the main dependency); first meetings usually within 2–4 weeks.
+- Contracts: no long lock-in; month-to-month after ramp.
+- Regions served: North America, Europe, UK, Australia, and Asia (outreach runs in prospects' time zones).
+- Contact: {b.EMAIL} · Book a strategy call: {SITE}/{BOOK}
+
+## Services
+{svc}
+
+## Company
+- [How it works]({SITE}/how-it-works.html): The four-stage process — discovery & ICP, infrastructure build, launch & booking, weekly optimisation.
+- [Results]({SITE}/results.html): Case studies and representative outcomes.
+- [About]({SITE}/about.html): Who we are and how we work.
+- [Book a call]({SITE}/{BOOK}): Free 30-minute strategy call with a meeting forecast and fixed quote.
+
+## Guides
+{arts}
+"""
 
 def build_404():
     """Self-contained branded 404 (inline styles so it renders at any URL depth)."""
@@ -1085,5 +1377,6 @@ def build():
     build_contact()
     build_blog_index()
     build_articles()
+    build_articles_buyer()
     build_meta_files()
     build_404()
