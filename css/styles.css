@@ -344,6 +344,10 @@ form.lead input:focus, form.lead select:focus, form.lead textarea:focus { outlin
 .divider { height:1px; background: var(--line); border:0; margin: 0; }
 
 /* ---------- Responsive ---------- */
+/* centre a lone last card in a 3-column grid (e.g. 7 service cards) */
+@media (min-width: 961px) {
+  .grid-3 > :last-child:nth-child(3n+1) { grid-column: 2; }
+}
 @media (max-width: 960px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-card { max-width: 460px; }

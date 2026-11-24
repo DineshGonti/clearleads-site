@@ -123,7 +123,8 @@ def related_services(current):
 def build_home():
     svc_cards = ""
     for slug, title, desc, flag in SERVICES:
-        tag = '<span class="flag-tag">Flagship</span>' if flag else ''
+        tag = ('<span class="flag-tag">Flagship</span>' if flag else
+               '<span class="flag-tag">New</span>' if slug in b.NEW_SERVICES else '')
         cls = "card flag" if flag else "card"
         svc_cards += f'''<a class="{cls}" href="{slug}.html" style="text-decoration:none">
           {tag}{svc_icon_html(slug)}<h3>{title}</h3><p>{desc}</p>
@@ -138,6 +139,8 @@ def build_home():
          "<p>Most clients are live within 14 days and see their first booked meetings inside the first 2–4 weeks, once inbox warm-up and sequencing hit full volume. Pipeline compounds from there as we optimise messaging and lists.</p>"),
         ("Do I need long-term contracts?",
          "<p>No. After an initial ramp period we operate month-to-month. We'd rather keep your business by booking meetings than by locking you into a contract.</p>"),
+        ("Do you use AI in your outreach?",
+         "<p>Yes. Our <a href='ai-sdr.html'>AI agentic SDR</a> service uses AI agents to research prospects, personalise messages, and follow up around the clock, while our team reviews every campaign and handles the real conversations. You get AI scale with human judgment where it counts.</p>"),
         ("Which industries do you work with?",
          "<p>We focus on B2B companies with a defined ICP and a real sales motion: SaaS, agencies, professional services, recruiting, and B2B services. If you sell to other businesses and know who your buyer is, outbound can work for you.</p>"),
     ]
@@ -223,7 +226,8 @@ def build_home():
 def build_services():
     cards = ""
     for slug, title, desc, flag in SERVICES:
-        tag = '<span class="flag-tag">Flagship</span>' if flag else ''
+        tag = ('<span class="flag-tag">Flagship</span>' if flag else
+               '<span class="flag-tag">New</span>' if slug in b.NEW_SERVICES else '')
         cls = "card flag" if flag else "card"
         cards += f'''<a class="{cls}" href="{slug}.html" style="text-decoration:none">
           {tag}{svc_icon_html(slug)}<h3>{title}</h3><p>{desc}</p>
@@ -383,6 +387,38 @@ def build_services_detail():
          ("Can you integrate with our CRM?",
           "<p>We sync activity and booked meetings to HubSpot, Salesforce, Pipedrive, and most major CRMs so your pipeline stays clean and attributable.</p>")],
         price="a monthly retainer, typically $2k–$6k depending on volume and channels.")
+
+    service_page(
+        "ai-sdr", "AI Agentic SDR",
+        "AI SDR services: agentic AI that books meetings, with humans in the loop",
+        "AI SDR Services | Agentic AI Sales Development | ClearLeads",
+        "AI agentic SDR service: AI agents research prospects, personalise outreach, and follow up 24/7, while our team reviews campaigns and books the meetings.",
+        "<strong>An AI agentic SDR is a team of AI agents that does the work of a sales development rep, managed by ClearLeads.</strong> The agents research each prospect, write personalised emails and LinkedIn messages, run multi-step follow-ups, and answer replies within minutes, around the clock. Our strategists set the targeting, review the messaging, and step in on every real conversation, so you get AI speed and scale without the robotic, spammy outreach.",
+        ["AI research agents that study each account and contact before writing",
+         "Personalised email and LinkedIn messages written per prospect, not per template",
+         "Always-on follow-ups and reply handling, answered in minutes, 24/7",
+         "Human strategists who approve messaging and handle qualified conversations",
+         "Deliverability guardrails: warmed domains, sending limits, and spam checks",
+         "Meetings booked to your calendar, with CRM sync and weekly reporting"],
+        [("Coverage", "<em>24/7</em>"),
+         ("Reply response time", "minutes"),
+         ("Prospects researched / mo", "thousands"),
+         ("Human review", "every campaign")],
+        ["You want SDR-level output without hiring, training, and managing reps.",
+         "You need to reach far more accounts than a human team can personalise for.",
+         "Leads go cold because nobody replies fast enough, evenings and weekends included.",
+         "You've tried AI outreach tools and got generic, spammy results."],
+        [("What is an AI SDR?",
+          "<p>An AI SDR (AI sales development representative) is software that does the prospecting work of a human SDR: researching prospects, writing outreach, sending follow-ups, and responding to replies. An agentic AI SDR goes further, planning and carrying out multi-step tasks on its own rather than just filling in templates.</p>"),
+         ("Will prospects know they're talking to AI?",
+          "<p>Messages are written to read naturally and are reviewed against your brand voice. Every qualified conversation is handed to a real person on our team before a meeting is booked, so prospects always deal with a human when it matters.</p>"),
+         ("Is an AI SDR better than a human SDR?",
+          "<p>AI is faster and more scalable: it researches thousands of prospects, personalises every message, and replies at any hour. Humans are better at judgment, nuance, and closing a conversation. That's why our service combines both: AI agents do the volume, our team handles the conversations that turn into meetings.</p>"),
+         ("Does AI outreach hurt email deliverability?",
+          "<p>Not when it's run with guardrails. We send from dedicated warmed domains, cap volume per inbox, check copy for spam signals, and monitor placement continuously. See our <a href='blog/cold-email-deliverability.html'>deliverability guide</a> for the full setup.</p>"),
+         ("How is this different from your appointment-setting service?",
+          "<p>Appointment setting is our human-led, done-for-you program. The AI agentic SDR uses AI agents for research, writing, and follow-up, which lets you cover many more accounts at a lower cost per prospect. Many clients combine the two.</p>")],
+        price="a monthly retainer scoped to the number of accounts and channels, quoted on the call.")
 
     service_page(
         "cold-email", "Done-For-You Cold Email",
@@ -773,6 +809,7 @@ def build_contact():
           <div><label for="service">What are you interested in?</label>
             <select id="service" name="service">
               <option>Appointment Setting</option>
+              <option>AI Agentic SDR</option>
               <option>Done-For-You Cold Email</option>
               <option>LinkedIn Outreach</option>
               <option>Lead List Building &amp; Data</option>
@@ -1291,7 +1328,7 @@ def build_articles_buyer():
 # ------------------------------------------------------------------
 # sitemap + robots + llms.txt
 # ------------------------------------------------------------------
-LASTMOD = "2026-11-03"   # bump when page content changes
+LASTMOD = "2026-11-24"   # bump when page content changes
 
 # AI answer engines / LLM crawlers we explicitly welcome (AEO)
 AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
@@ -1333,6 +1370,7 @@ def llms_txt():
 
 Key facts:
 - What we do: outsourced SDR / appointment setting: prospect list building, multi-channel outreach (cold email + LinkedIn), human reply handling, qualification, and meeting booking with CRM sync and weekly reporting.
+- AI agentic SDR: AI agents research prospects, write personalised email and LinkedIn outreach, and follow up 24/7; ClearLeads strategists review campaigns and handle qualified conversations before meetings are booked.
 - Who it's for: B2B SaaS, agencies, consultancies, professional services, recruiting, fintech, and other B2B companies with a defined ideal customer profile.
 - Pricing: managed appointment-setting programs typically run $2,000–$6,000 per month on retainer; lead lists and one-time outbound system builds are quoted separately.
 - Time to launch: about 14 days (inbox warm-up is the main dependency); first meetings usually within 2–4 weeks.

@@ -4,6 +4,7 @@
 
 Key facts:
 - What we do: outsourced SDR / appointment setting: prospect list building, multi-channel outreach (cold email + LinkedIn), human reply handling, qualification, and meeting booking with CRM sync and weekly reporting.
+- AI agentic SDR: AI agents research prospects, write personalised email and LinkedIn outreach, and follow up 24/7; ClearLeads strategists review campaigns and handle qualified conversations before meetings are booked.
 - Who it's for: B2B SaaS, agencies, consultancies, professional services, recruiting, fintech, and other B2B companies with a defined ideal customer profile.
 - Pricing: managed appointment-setting programs typically run $2,000–$6,000 per month on retainer; lead lists and one-time outbound system builds are quoted separately.
 - Time to launch: about 14 days (inbox warm-up is the main dependency); first meetings usually within 2–4 weeks.
@@ -13,6 +14,7 @@ Key facts:
 
 ## Services
 - [Appointment Setting](https://clearleads.co/appointment-setting.html): Qualified sales meetings booked straight to your calendar.
+- [AI Agentic SDR](https://clearleads.co/ai-sdr.html): AI agents that research, personalise, and follow up 24/7, with human oversight.
 - [Done-For-You Cold Email](https://clearleads.co/cold-email.html): Inbox setup, deliverability, copy, sending & reply handling.
 - [LinkedIn Outreach](https://clearleads.co/linkedin-outreach.html): Targeted social selling that complements your email channel.
 - [Lead List Building & Data](https://clearleads.co/lead-lists.html): Verified, targeted prospect lists built to your ICP.

@@ -5,7 +5,7 @@ import os, json, html, pathlib
 
 SITE = "https://clearleads.co"
 NAME = "ClearLeads"
-CSS_VER = "7"   # bump to bust the stylesheet cache on deploy
+CSS_VER = "8"   # bump to bust the stylesheet cache on deploy
 OUT = pathlib.Path(__file__).resolve().parents[1]
 BOOK = "contact.html"      # book-a-call conversion page
 
@@ -20,6 +20,7 @@ LOGO_SVG = (
 # ---- service catalog (drives nav dropdown, home cards, sitemap) ----
 SERVICES = [
     ("appointment-setting",  "Appointment Setting",     "Qualified sales meetings booked straight to your calendar.", True),
+    ("ai-sdr",               "AI Agentic SDR",          "AI agents that research, personalise, and follow up 24/7, with human oversight.", False),
     ("cold-email",           "Done-For-You Cold Email", "Inbox setup, deliverability, copy, sending & reply handling.", False),
     ("linkedin-outreach",    "LinkedIn Outreach",       "Targeted social selling that complements your email channel.", False),
     ("lead-lists",           "Lead List Building & Data","Verified, targeted prospect lists built to your ICP.", False),
@@ -38,10 +39,13 @@ ICONS = {
     "target":'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
     "shield":'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
     "chart":'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 15l3-4 3 2 4-6"/></svg>',
+    "bot":'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 4h6M9 14h.01M15 14h.01M2 13v3M22 13v3"/></svg>',
     "bolt":'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>',
 }
+NEW_SERVICES = {"ai-sdr"}   # get a "New" tag on service cards
+
 SVC_ICON = {
-    "appointment-setting":"calendar","cold-email":"mail","linkedin-outreach":"linkedin",
+    "appointment-setting":"calendar","ai-sdr":"bot","cold-email":"mail","linkedin-outreach":"linkedin",
     "lead-lists":"list","database-reactivation":"refresh","outbound-system-setup":"settings",
 }
 
@@ -161,9 +165,9 @@ ORG_SCHEMA = {
     "@context":"https://schema.org","@type":"Organization","@id":f"{SITE}/#org",
     "name":NAME,"url":f"{SITE}/","logo":f"{SITE}/assets/logo.png","image":OG_IMAGE,
     "email":EMAIL,"slogan":"Qualified B2B sales meetings, booked on your calendar.",
-    "description":"ClearLeads is a B2B lead generation and appointment setting agency. We book qualified sales meetings for B2B companies through done-for-you cold email and LinkedIn outreach, verified lead lists, and database reactivation.",
+    "description":"ClearLeads is a B2B lead generation and appointment setting agency. We book qualified sales meetings for B2B companies through done-for-you cold email and LinkedIn outreach, AI agentic SDRs, verified lead lists, and database reactivation.",
     "areaServed":"Worldwide",
-    "knowsAbout":["B2B lead generation","Appointment setting","Outsourced SDR","Cold email outreach",
+    "knowsAbout":["B2B lead generation","Appointment setting","Outsourced SDR","AI SDR","Agentic AI for sales","Cold email outreach",
                   "Email deliverability","LinkedIn outreach","Sales prospecting","Lead list building",
                   "Database reactivation","Outbound sales"],
     "contactPoint":{"@type":"ContactPoint","contactType":"sales","email":EMAIL,
